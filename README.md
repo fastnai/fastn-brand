@@ -6,10 +6,22 @@ The official Fastn brand guidelines. Everything you need to represent Fastn corr
 
 | File | Description |
 |---|---|
+| [`logos/`](./logos) | Official Fastn logo files (SVG, PNG, JPG) |
 | [`fastn-brand-system.html`](./fastn-brand-system.html) | Interactive brand guidelines — open in any browser |
 | [`tokens.json`](./tokens.json) | Design tokens for Figma, Style Dictionary, Tailwind |
 | [`tokens.css`](./tokens.css) | CSS custom properties — drop into any project |
 | [`SKILL.md`](./SKILL.md) | Claude AI skill — adds brand context to any AI-assisted work |
+
+## Logos
+
+| File | Description |
+|---|---|
+| [`fastn-logo.svg`](./logos/fastn-logo.svg) | Full logo with wordmark (SVG, scalable) |
+| [`fastn-logo-740px.png`](./logos/fastn-logo-740px.png) | Full logo with wordmark (PNG, 740px) |
+| [`fastn-logo-400px.png`](./logos/fastn-logo-400px.png) | Full logo with wordmark (PNG, 400px) |
+| [`fastn-icon-rounded.jpg`](./logos/fastn-icon-rounded.jpg) | Icon mark only, rounded square background |
+| [`fastn-icon-square.jpg`](./logos/fastn-icon-square.jpg) | Icon mark only, square background |
+| [`fastn-icon-linkedin.jpg`](./logos/fastn-icon-linkedin.jpg) | Icon mark sized for LinkedIn |
 
 ## Quick Start
 
