@@ -53,10 +53,11 @@ Use tokens in your project:
 
 ### Typography
 
-- **Font**: Geist — weight 400-800
+- **Headings**: Geist — weight 400-800
+- **Body**: Inter — weight 400-600, for body text and long-form content
 - **Mono**: Geist Mono — for all code and technical content
-- **Display**: 96px, weight 800, tracking -0.04em
-- **Body**: 16px, weight 400, line-height 1.7
+- **Display**: 96px, Geist weight 800, tracking -0.04em
+- **Body text**: 16px, Inter weight 400, line-height 1.7
 
 ### Dual Theme
 

@@ -24,11 +24,12 @@ You are working on a project for **Fastn** (fastn.ai) — a developer-first inte
 
 ## Typography
 
-- **Sans**: Geist (weights 400–800) — all UI and marketing text
+- **Sans**: Geist (weights 400–800) — headings, display, UI labels
+- **Body**: Inter (weights 400–600) — body text, paragraphs, long-form content
 - **Mono**: Geist Mono — code blocks, technical content, data
-- **Display**: 96px, weight 800, letter-spacing -0.04em
-- **Headings**: weight 700, letter-spacing -0.02em
-- **Body**: 16px, weight 400, line-height 1.7
+- **Display**: 96px, Geist weight 800, letter-spacing -0.04em
+- **Headings**: Geist weight 700, letter-spacing -0.02em
+- **Body text**: 16px, Inter weight 400, line-height 1.7
 
 ## Themes
 

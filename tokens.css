@@ -51,6 +51,7 @@
 
   /* Typography */
   --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'Geist Mono', 'Fira Code', monospace;
 }
 
