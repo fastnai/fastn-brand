@@ -53,6 +53,53 @@ The brand uses a dual-theme system. The primary color `#4F3FFF` stays identical 
 | Body text | `#3A3A55` |
 | Headings | `#111118` |
 
+## Product UI Palette
+
+The product uses a separate warm-neutral palette. Electric Indigo appears **only** on the primary CTA button. Brand gradient is **prohibited** in product UI.
+
+### Key Rules
+1. `#4F3FFF` appears ONLY on the primary CTA. Nowhere else.
+2. All grays use warm/brown undertones. Never blue-gray, never cool-gray.
+3. Selection = subtle background shift + border darkening — not color.
+4. Checkboxes are neutral (charcoal/warm gray) — never brand-colored.
+5. Brand gradient (`#4F3FFF`→`#FF4D8D`) is prohibited in product UI. Marketing only.
+6. Semantic colors (success, warning, error, info) remain unchanged.
+
+### Light Mode (Warm)
+| Token | Hex | Usage |
+|---|---|---|
+| Background | `#FAF9F7` | Warm white |
+| Card / Surface | `#FFFFFF` | |
+| Card Selected | `#F5F4F0` | Warm selection tint |
+| Section BG | `#F0EEE8` | |
+| Border Default | `#E8E5DE` | |
+| Border Selected | `#D4D0C8` | Softer emphasis |
+| Heading Text | `#1A1816` | High-contrast warm black |
+| Body Text | `#6F6B66` | |
+| Muted / Placeholder | `#A8A49D` | |
+| Checkbox Checked | `#3D3B37` | Deep charcoal, NOT brand |
+| Checkbox Empty | `#D4D0C8` | |
+| Primary CTA | `#4F3FFF` | Only chromatic element |
+| Send / Icon BG | `#EEEDEA` | |
+| Send / Icon Fill | `#8A8680` | |
+
+### Dark Mode (Warm Dark)
+| Token | Hex | Usage |
+|---|---|---|
+| Background | `#1A1918` | Warm brown undertone, never pure black |
+| Card / Surface | `#222120` | |
+| Card Selected | `#272622` | |
+| Border Default | `#2B2A27` | |
+| Border Selected | `#3E3D38` | |
+| Heading Text | `#E3E1DA` | |
+| Body Text | `#918F86` | |
+| Muted / Placeholder | `#605E56` | |
+| Checkbox Checked | `#A8A69E` | Warm light gray |
+| Checkbox Empty | `#3E3D38` | |
+| Primary CTA | `#4F3FFF` | Only chromatic element |
+| Send / Icon BG | `rgba(255,255,255,0.04)` | |
+| Send / Icon Fill | `#807E75` | |
+
 ## Voice & Tone
 
 ### Principles

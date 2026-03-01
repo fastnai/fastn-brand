@@ -81,6 +81,53 @@
   --t3:        #8080A0;
 }
 
+/* ── Product UI Theme — Light (Warm) ── */
+/* Warm neutral palette: Indigo appears ONLY on primary CTA. */
+[data-theme="product-light"] {
+  --bg:              #FAF9F7;
+  --s1:              #FFFFFF;
+  --s2:              #F5F4F0;
+  --s3:              #F0EEE8;
+  --border:          #E8E5DE;
+  --border-hi:       #D4D0C8;
+  --t1:              #1A1816;
+  --t2:              #6F6B66;
+  --t3:              #A8A49D;
+
+  --pui-card:            #FFFFFF;
+  --pui-card-selected:   #F5F4F0;
+  --pui-section-bg:      #F0EEE8;
+  --pui-border-selected: #D4D0C8;
+  --pui-checkbox-on:     #3D3B37;
+  --pui-checkbox-off:    #D4D0C8;
+  --pui-cta:             #4F3FFF;
+  --pui-icon-bg:         #EEEDEA;
+  --pui-icon-fill:       #8A8680;
+}
+
+/* ── Product UI Theme — Dark (Warm Dark) ── */
+[data-theme="product-dark"] {
+  --bg:              #1A1918;
+  --s1:              #222120;
+  --s2:              #272622;
+  --s3:              #2B2A27;
+  --border:          #2B2A27;
+  --border-hi:       #3E3D38;
+  --t1:              #E3E1DA;
+  --t2:              #918F86;
+  --t3:              #605E56;
+
+  --pui-card:            #222120;
+  --pui-card-selected:   #272622;
+  --pui-section-bg:      #2B2A27;
+  --pui-border-selected: #3E3D38;
+  --pui-checkbox-on:     #A8A69E;
+  --pui-checkbox-off:    #3E3D38;
+  --pui-cta:             #4F3FFF;
+  --pui-icon-bg:         rgba(255,255,255,0.04);
+  --pui-icon-fill:       #807E75;
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
