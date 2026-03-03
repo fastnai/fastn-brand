@@ -31,7 +31,7 @@ Use tokens in your project:
 
 ```css
 .button {
-  background: var(--brand);       /* #4F3FFF */
+  background: var(--brand);       /* #6C5CE7 */
   color: #fff;
   border-radius: var(--radius-3); /* 8px */
 }
@@ -43,10 +43,10 @@ Use tokens in your project:
 
 | Token | Value | Use |
 |---|---|---|
-| `--brand` | `#4F3FFF` | Primary — CTAs, links, focus rings |
-| `--brand-hover` | `#3B2DE8` | Hover/pressed states |
-| `--brand-light` | `#7B6FFF` | Tags, labels, eyebrows |
-| Gradient | `#4F3FFF to #FF4D8D` | Hero art, avatars — sparingly |
+| `--brand` | `#6C5CE7` | Primary — CTAs, links, focus rings |
+| `--brand-hover` | `#5A4CD6` | Hover/pressed states |
+| `--brand-light` | `#8F85E8` | Tags, labels, eyebrows |
+| Gradient | `#6C5CE7 to #A78BFA` | Hero art, avatars — sparingly |
 | `--success` | `#10B981` | Positive states |
 | `--warning` | `#F59E0B` | Caution states |
 | `--error` | `#EF4444` | Error states |
@@ -63,12 +63,12 @@ Use tokens in your project:
 
 | | Dark (marketing, docs) | Light (app, dashboard) |
 |---|---|---|
-| Background | `#09090E` | `#FFFFFF` |
-| Card | `#111118` | `#F5F5FA` |
-| Border | `#2E2E3A` | `#E0E0EC` |
-| Body text | `#B0B0C8` | `#3A3A55` |
+| Background | `#101014` | `#FFFFFF` |
+| Card | `#18181E` | `#F5F5FA` |
+| Border | `#2A2A36` | `#E0E0EC` |
+| Body text | `#A0A0B8` | `#3A3A55` |
 
-The brand primary `#4F3FFF` is **identical in both themes** — the visual thread connecting every surface.
+The brand primary `#6C5CE7` is **identical in both themes** — the visual thread connecting every surface.
 
 ## Using with AI (Claude)
 

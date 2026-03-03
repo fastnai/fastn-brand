@@ -12,15 +12,15 @@ You are working on a project for **Fastn** (fastn.ai) — a developer-first inte
 
 | Token | Hex | Usage |
 |---|---|---|
-| `--brand` | `#4F3FFF` | Primary — CTAs, links, focus rings, key UI elements |
-| `--brand-hover` | `#3B2DE8` | Hover and pressed states |
-| `--brand-light` | `#7B6FFF` | Tags, labels, secondary accents |
-| `--accent-pink` | `#FF4D8D` | Gradient endpoint only — never as a standalone color |
+| `--brand` | `#6C5CE7` | Primary — CTAs, links, focus rings, key UI elements |
+| `--brand-hover` | `#5A4CD6` | Hover and pressed states |
+| `--brand-light` | `#8F85E8` | Tags, labels, secondary accents |
+| `--accent-violet` | `#A78BFA` | Gradient endpoint only — never as a standalone color |
 | `--success` | `#10B981` | Positive / success states |
 | `--warning` | `#F59E0B` | Warning / caution states |
 | `--error` | `#EF4444` | Error / destructive states |
 
-**Gradient**: `linear-gradient(135deg, #4F3FFF, #FF4D8D)` — use sparingly for hero art, avatars, decorative accents. Never for body text or large surfaces.
+**Gradient**: `linear-gradient(135deg, #6C5CE7, #A78BFA)` — use sparingly for hero art, avatars, decorative accents. Never for body text or large surfaces.
 
 ## Typography
 
@@ -33,16 +33,16 @@ You are working on a project for **Fastn** (fastn.ai) — a developer-first inte
 
 ## Themes
 
-The brand uses a dual-theme system. The primary color `#4F3FFF` stays identical in both.
+The brand uses a dual-theme system. The primary color `#6C5CE7` stays identical in both.
 
 ### Dark (marketing, docs, landing pages)
 | Surface | Value |
 |---|---|
-| Background | `#09090E` |
-| Card | `#111118` |
-| Border | `#2E2E3A` |
-| Body text | `#B0B0C8` |
-| Headings | `#FFFFFF` |
+| Background | `#101014` |
+| Card | `#18181E` |
+| Border | `#2A2A36` |
+| Body text | `#A0A0B8` |
+| Headings | `#E4E4EC` |
 
 ### Light (app, dashboard, tools)
 | Surface | Value |
@@ -58,11 +58,11 @@ The brand uses a dual-theme system. The primary color `#4F3FFF` stays identical 
 The product uses a separate warm-neutral palette. Electric Indigo appears **only** on the primary CTA button. Brand gradient is **prohibited** in product UI.
 
 ### Key Rules
-1. `#4F3FFF` appears ONLY on the primary CTA. Nowhere else.
+1. `#6C5CE7` appears ONLY on the primary CTA. Nowhere else.
 2. All grays use warm/brown undertones. Never blue-gray, never cool-gray.
 3. Selection = subtle background shift + border darkening — not color.
 4. Checkboxes are neutral (charcoal/warm gray) — never brand-colored.
-5. Brand gradient (`#4F3FFF`→`#FF4D8D`) is prohibited in product UI. Marketing only.
+5. Brand gradient (`#6C5CE7`→`#A78BFA`) is prohibited in product UI. Marketing only.
 6. Semantic colors (success, warning, error, info) remain unchanged.
 
 ### Light Mode (Warm)
@@ -79,7 +79,7 @@ The product uses a separate warm-neutral palette. Electric Indigo appears **only
 | Muted / Placeholder | `#A8A49D` | |
 | Checkbox Checked | `#3D3B37` | Deep charcoal, NOT brand |
 | Checkbox Empty | `#D4D0C8` | |
-| Primary CTA | `#4F3FFF` | Only chromatic element |
+| Primary CTA | `#6C5CE7` | Only chromatic element |
 | Send / Icon BG | `#EEEDEA` | |
 | Send / Icon Fill | `#8A8680` | |
 
@@ -96,7 +96,7 @@ The product uses a separate warm-neutral palette. Electric Indigo appears **only
 | Muted / Placeholder | `#605E56` | |
 | Checkbox Checked | `#A8A69E` | Warm light gray |
 | Checkbox Empty | `#3E3D38` | |
-| Primary CTA | `#4F3FFF` | Only chromatic element |
+| Primary CTA | `#6C5CE7` | Only chromatic element |
 | Send / Icon BG | `rgba(255,255,255,0.04)` | |
 | Send / Icon Fill | `#807E75` | |
 
