@@ -1,134 +1,87 @@
 /**
- * Fastn Design Tokens — v1.0
- * Generated from tokens.json
+ * Fastn Design Tokens — v2.0
+ * Aligned with fastn.ai
  * Usage: import this file once at the root of your app.
  */
 
 :root {
-  /* Brand Primary (same in both themes) */
-  --brand:          #6C5CE7;
-  --brand-hover:    #5A4CD6;
-  --brand-light:    #8F85E8;
-  --brand-subtle:   rgba(108, 92, 231, 0.12);
-  --brand-faint:    rgba(108, 92, 231, 0.06);
+  /* Brand accent — Fastn Blue */
+  --accent:        #4FB2FF;
+  --accent-hi:     #7AC4FF;
+  --accent-lo:     #2F8FD6;
+  --accent-on:     #06121C;
+  --accent-tint:   rgba(79, 178, 255, 0.10);
+  --accent-faint:  rgba(79, 178, 255, 0.04);
 
-  /* Signature Gradient */
-  --gradient:       linear-gradient(135deg, #6C5CE7 0%, #A78BFA 100%);
-  --gradient-soft:  linear-gradient(135deg, rgba(108,92,231,0.15) 0%, rgba(167,139,250,0.15) 100%);
-
-  /* Semantic Colors */
-  --success:        #10B981;
-  --success-bg:     rgba(16, 185, 129, 0.10);
-  --warning:        #F59E0B;
-  --warning-bg:     rgba(245, 158, 11, 0.10);
-  --error:          #EF4444;
-  --error-bg:       rgba(239, 68, 68, 0.10);
-  --info:           #06B6D4;
-  --info-bg:        rgba(6, 182, 212, 0.10);
+  /* Semantic */
+  --success:    #10B981;
+  --success-bg: rgba(16, 185, 129, 0.10);
+  --warning:    #F59E0B;
+  --warning-bg: rgba(245, 158, 11, 0.10);
+  --error:      #EF4444;
+  --error-bg:   rgba(239, 68, 68, 0.10);
+  --info:       #4FB2FF;
+  --info-bg:    rgba(79, 178, 255, 0.10);
 
   /* Spacing */
   --sp-1:  4px;  --sp-2:  8px;  --sp-3:  12px; --sp-4:  16px;
   --sp-6:  24px; --sp-8:  32px; --sp-12: 48px;
   --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
 
-  /* Border Radius */
-  --radius-1:    4px;   /* tags, chips */
+  /* Radius */
+  --radius-1:    4px;   /* chips, tags */
   --radius-2:    6px;   /* inputs */
   --radius-3:    8px;   /* buttons */
   --radius-4:    12px;  /* cards */
   --radius-5:    16px;  /* panels */
   --radius-6:    24px;  /* modals */
-  --radius-full: 999px; /* avatars, pills */
+  --radius-full: 9999px;
 
   /* Motion */
-  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
-  --dur-fast:     100ms;
-  --dur-default:  150ms;
-  --dur-medium:   250ms;
-  --dur-slow:     400ms;
+  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --dur-fast:    100ms;
+  --dur:         180ms;
+  --dur-medium:  240ms;
+  --dur-slow:    320ms;
 
   /* Typography */
-  --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'Geist Mono', 'Fira Code', monospace;
+  --font-display: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:    'Geist Mono', 'Fira Code', ui-monospace, monospace;
 }
 
-/* Dark Theme (default) */
+/* Dark theme (default) */
 :root, [data-theme="dark"] {
-  --bg:        #101014;
-  --s1:        #18181E;
-  --s2:        #1E1E26;
-  --s3:        #262630;
-  --border:    #2A2A36;
-  --border-hi: #38384A;
-  --t1:        #E4E4EC;
-  --t2:        #A0A0B8;
-  --t3:        #6E6E84;
+  --bg:        #0E0E10;
+  --s1:        #111113;
+  --s2:        #1A1A1D;
+  --s3:        #222226;
+  --border:    #2A2A2E;
+  --border-hi: #3E3E44;
+
+  --t1: #FFFFFF;
+  --t2: #D6D6D8;
+  --t3: #9A9AA2;
+  --t4: #6E6E76;
 }
 
-/* Light Theme */
+/* Light theme */
 [data-theme="light"] {
   --bg:        #FFFFFF;
-  --s1:        #F5F5FA;
-  --s2:        #EBEBF5;
-  --s3:        #E0E0EC;
-  --border:    #E0E0EC;
-  --border-hi: #C8C8DC;
-  --t1:        #0A0A12;
-  --t2:        #3A3A55;
-  --t3:        #8080A0;
+  --s1:        #F7F7F8;
+  --s2:        #EEEEF0;
+  --s3:        #E4E4E7;
+  --border:    #E4E4E7;
+  --border-hi: #C9C9CF;
+
+  --t1: #0E0E10;
+  --t2: #2A2A2E;
+  --t3: #5A5A62;
+  --t4: #8A8A92;
 }
 
-/* ── Product UI Theme — Light (Warm) ── */
-/* Warm neutral palette: Indigo appears ONLY on primary CTA. */
-[data-theme="product-light"] {
-  --bg:              #FAF9F7;
-  --s1:              #FFFFFF;
-  --s2:              #F5F4F0;
-  --s3:              #F0EEE8;
-  --border:          #E8E5DE;
-  --border-hi:       #D4D0C8;
-  --t1:              #1A1816;
-  --t2:              #6F6B66;
-  --t3:              #A8A49D;
-
-  --pui-card:            #FFFFFF;
-  --pui-card-selected:   #F5F4F0;
-  --pui-section-bg:      #F0EEE8;
-  --pui-border-selected: #D4D0C8;
-  --pui-checkbox-on:     #3D3B37;
-  --pui-checkbox-off:    #D4D0C8;
-  --pui-cta:             #6C5CE7;
-  --pui-icon-bg:         #EEEDEA;
-  --pui-icon-fill:       #8A8680;
-}
-
-/* ── Product UI Theme — Dark (Warm Dark) ── */
-[data-theme="product-dark"] {
-  --bg:              #1A1918;
-  --s1:              #222120;
-  --s2:              #272622;
-  --s3:              #2B2A27;
-  --border:          #2B2A27;
-  --border-hi:       #3E3D38;
-  --t1:              #E3E1DA;
-  --t2:              #918F86;
-  --t3:              #605E56;
-
-  --pui-card:            #222120;
-  --pui-card-selected:   #272622;
-  --pui-section-bg:      #2B2A27;
-  --pui-border-selected: #3E3D38;
-  --pui-checkbox-on:     #A8A69E;
-  --pui-checkbox-off:    #3E3D38;
-  --pui-cta:             #6C5CE7;
-  --pui-icon-bg:         rgba(255,255,255,0.04);
-  --pui-icon-fill:       #807E75;
-}
-
-/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
