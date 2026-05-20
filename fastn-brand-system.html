@@ -13,11 +13,12 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  /* Accent. Used only on the primary CTA, inline links, and focus rings. */
+  /* Accent. Used only on the primary CTA, inline links, and focus rings.
+     accent-2 is the gradient endpoint, picked so that white text on it
+     still passes WCAG AA at the CTA's text size (19px / 700). */
   --accent-1:    #6C5CE7;
-  --accent-2:    #A78BFA;
+  --accent-2:    #8E76F2;
   --accent-glow: rgba(124, 92, 231, 0.45);
-  --accent-link: #A78BFA;
 
   --font: 'Inter', system-ui, -apple-system, sans-serif;
 
@@ -43,6 +44,8 @@
   --t4: #5C5C64;
 
   --on-accent:     #FFFFFF;
+  --accent-link:   #A78BFA;   /* 6.51 contrast on dark, AA */
+  --placeholder:   #8A8A92;   /* T3, 5.17 on dark, AA */
   --wordmark-filt: invert(1);
 }
 
@@ -59,6 +62,8 @@
   --t4: #A4A4AC;
 
   --on-accent:     #FFFFFF;
+  --accent-link:   #6C5CE7;   /* 4.86 on white, AA. accent-2 fails (2.72). */
+  --placeholder:   #6E6E76;   /* T3, 5.05 on white, AA */
   --wordmark-filt: none;
 }
 
@@ -163,7 +168,7 @@ label { display: block; font-size: 15px; font-weight: 600; color: var(--t1); mar
   justify-content: center;
   gap: 10px;
   font: inherit;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   width: 100%;
   padding: 16px 20px;
@@ -173,6 +178,9 @@ label { display: block; font-size: 15px; font-weight: 600; color: var(--t1); mar
   text-decoration: none;
   transition: filter var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
+/* Primary CTA bumps to 19px / 700 so it qualifies as WCAG large text
+   (>=14pt bold). White on the gradient endpoint passes AA-large (3.48). */
+.btn-primary { font-size: 19px; font-weight: 700; }
 .btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(108,92,231,0.40); }
 .btn-primary {
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
@@ -325,7 +333,7 @@ label { display: block; font-size: 15px; font-weight: 600; color: var(--t1); mar
   outline: none;
   transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
-.input::placeholder { color: var(--t4); }
+.input::placeholder { color: var(--placeholder); }
 .input:focus { border-color: var(--accent-1); box-shadow: 0 0 0 3px rgba(108,92,231,0.20); }
 
 /* Inline links */
@@ -431,14 +439,14 @@ footer .links a + a { margin-left: 16px; }
         <span class="meta"><span class="name">Indigo 1</span><span class="use">Primary CTA gradient start</span></span>
         <span class="hex">#6C5CE7</span>
       </div>
-      <div class="color-row" data-copy="#A78BFA">
-        <span class="chip" style="background:#A78BFA"></span>
-        <span class="meta"><span class="name">Indigo 2</span><span class="use">CTA gradient end. Inline link color.</span></span>
-        <span class="hex">#A78BFA</span>
+      <div class="color-row" data-copy="#8E76F2">
+        <span class="chip" style="background:#8E76F2"></span>
+        <span class="meta"><span class="name">Indigo 2</span><span class="use">CTA gradient end. Dark-theme inline link color.</span></span>
+        <span class="hex">#8E76F2</span>
       </div>
-      <div class="color-row" data-copy="linear-gradient(90deg, #6C5CE7, #A78BFA)">
-        <span class="chip" style="background:linear-gradient(90deg, #6C5CE7, #A78BFA)"></span>
-        <span class="meta"><span class="name">CTA gradient</span><span class="use">Primary button. Always paired with the 28px outer glow.</span></span>
+      <div class="color-row" data-copy="linear-gradient(90deg, #6C5CE7, #8E76F2)">
+        <span class="chip" style="background:linear-gradient(90deg, #6C5CE7, #8E76F2)"></span>
+        <span class="meta"><span class="name">CTA gradient</span><span class="use">Primary button only. Always paired with the 28px outer glow.</span></span>
         <span class="hex">90deg</span>
       </div>
     </div>
@@ -600,16 +608,24 @@ footer .links a + a { margin-left: 16px; }
     </header>
     <table class="a11y-table">
       <thead>
-        <tr><th>Combo</th><th>Ratio</th><th>Status</th></tr>
+        <tr><th>Combo</th><th>Theme</th><th>Ratio</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr><td>Text 1 on Background</td><td>16.9:1</td><td><span class="pass">AAA</span></td></tr>
-        <tr><td>Text 2 on Background</td><td>9.1:1</td><td><span class="pass">AAA</span></td></tr>
-        <tr><td>Text 3 on Background</td><td>5.0:1</td><td><span class="pass">AA</span></td></tr>
-        <tr><td>White on Indigo CTA</td><td>4.8:1</td><td><span class="pass">AA</span></td></tr>
-        <tr><td>Indigo link on Background</td><td>5.8:1</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>Text 1 on Background</td><td>dark</td><td>17.7</td><td><span class="pass">AAA</span></td></tr>
+        <tr><td>Text 2 on Background</td><td>dark</td><td>9.48</td><td><span class="pass">AAA</span></td></tr>
+        <tr><td>Text 3 on Background</td><td>dark</td><td>5.17</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>Inline link on Background</td><td>dark</td><td>6.51</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>Text 1 on Background</td><td>light</td><td>17.7</td><td><span class="pass">AAA</span></td></tr>
+        <tr><td>Text 2 on Background</td><td>light</td><td>9.67</td><td><span class="pass">AAA</span></td></tr>
+        <tr><td>Text 3 on Background</td><td>light</td><td>5.05</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>Inline link on Background</td><td>light</td><td>4.86</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>White on CTA (gradient start)</td><td>both</td><td>4.86</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>White on CTA (gradient end, 19px bold)</td><td>both</td><td>3.48</td><td><span class="pass">AA large</span></td></tr>
+        <tr><td>Placeholder on input</td><td>dark</td><td>4.80</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>Placeholder on input</td><td>light</td><td>4.60</td><td><span class="pass">AA</span></td></tr>
       </tbody>
     </table>
+    <p style="margin-top:20px; color:var(--t3); font-size:13px; line-height:1.6;">Note: Text 4 (#5C5C64 dark, #A4A4AC light) does not meet text contrast and is reserved for non-text decoration only.</p>
   </div>
 </section>
 

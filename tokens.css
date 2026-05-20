@@ -7,9 +7,8 @@
   /* Accent. Use only on the primary CTA, inline links, and focus rings.
      Nothing else gets chromatic color. */
   --accent-1:    #6C5CE7;
-  --accent-2:    #A78BFA;
+  --accent-2:    #8E76F2;
   --accent-glow: rgba(124, 92, 231, 0.45);
-  --accent-link: #A78BFA;
 
   /* Semantic. Reserved for state indicators (success/error pills, etc.) */
   --success: #10B981;
@@ -41,9 +40,11 @@
   --t1: #FFFFFF;
   --t2: #BDBDC4;
   --t3: #8A8A92;
-  --t4: #5C5C64;
+  --t4: #5C5C64;        /* non-text only; fails text contrast */
 
-  --on-accent: #FFFFFF;
+  --on-accent:   #FFFFFF;
+  --accent-link: #A78BFA; /* 6.51 on dark bg, AA */
+  --placeholder: #8A8A92; /* T3, 4.80 on input fill, AA */
 }
 
 /* Light theme */
@@ -57,9 +58,11 @@
   --t1: #18181B;
   --t2: #44444A;
   --t3: #6E6E76;
-  --t4: #A4A4AC;
+  --t4: #A4A4AC;        /* non-text only; fails text contrast */
 
-  --on-accent: #FFFFFF;
+  --on-accent:   #FFFFFF;
+  --accent-link: #6C5CE7; /* 4.86 on white, AA. accent-2 fails (2.72). */
+  --placeholder: #6E6E76; /* T3, 4.60 on input fill, AA */
 }
 
 @media (prefers-reduced-motion: reduce) {
