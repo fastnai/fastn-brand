@@ -1,142 +1,246 @@
 # Fastn Brand Skill
 
-You are working on a project for **Fastn** (fastn.ai) — a developer-first integration platform. Apply these brand guidelines to every design, copy, and code decision.
+You are working on a project for Fastn (fastn.ai). Apply these brand guidelines to every design, copy, and code decision.
+
+## Philosophy
+
+Color is punctuation, not prose. One accent (the indigo gradient) carries every primary action. Everything else is neutral grayscale. Hierarchy comes from weight and spacing, never from a second color.
+
+If a design feels visually busy, the fix is almost always to remove color, not add it.
 
 ## Identity
 
-- **Name**: Fastn — always lowercase "fastn" in logos, title case "Fastn" in prose
-- **Tagline**: Connect everything, ship faster
-- **Personality**: Fast, precise, developer-friendly, quietly confident
+- Name: Fastn. Always lowercase "fastn" in logos and product UI. Title case "Fastn" in prose.
+- Tone: Direct, confident, without ceremony. Engineer briefing a teammate.
+- We sell trust. Every visual choice should feel calm, deliberate, high-signal.
 
-## Colors
+## Color
 
-| Token | Hex | Usage |
+### Accent (the only chromatic color in the system)
+
+| Token | Value | Use |
 |---|---|---|
-| `--brand` | `#6C5CE7` | Primary — CTAs, links, focus rings, key UI elements |
-| `--brand-hover` | `#5A4CD6` | Hover and pressed states |
-| `--brand-light` | `#8F85E8` | Tags, labels, secondary accents |
-| `--accent-violet` | `#A78BFA` | Gradient endpoint only — never as a standalone color |
-| `--success` | `#10B981` | Positive / success states |
-| `--warning` | `#F59E0B` | Warning / caution states |
-| `--error` | `#EF4444` | Error / destructive states |
+| `--accent-1` | `#6C5CE7` | Gradient start. Inline link color in light theme. |
+| `--accent-2` | `#8E76F2` | Gradient end. Inline link color in dark theme. |
+| `--accent-glow` | `rgba(124, 92, 231, 0.45)` | 28px outer glow on the primary CTA. |
+| `--accent-link` | theme-specific | `#A78BFA` in dark, `#6C5CE7` in light. |
 
-**Gradient**: `linear-gradient(135deg, #6C5CE7, #A78BFA)` — use sparingly for hero art, avatars, decorative accents. Never for body text or large surfaces.
+The CTA gradient is `linear-gradient(90deg, #6C5CE7, #8E76F2)`. It appears on the primary CTA only. Paired with the 28px outer glow.
+
+The accent appears on three things, nothing else:
+
+1. The primary CTA button (gradient fill + glow).
+2. Inline links inside body text (solid `--accent-link`).
+3. Focus rings on interactive elements (`box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.40)`).
+
+It must not appear on: section labels, badges, eyebrow tags, hover states for non-action elements, decorative dividers, icons, or background tints.
+
+### Dark theme (default)
+
+| Surface | Hex |
+|---|---|
+| Background | `#18181B` |
+| Surface 1 (cards, inputs) | `#1F1F23` |
+| Surface 2 (hover) | `#26262B` |
+| Border | `#2A2A30` |
+| Border high (hover, focus) | `#3A3A42` |
+| Text 1 (headings) | `#FFFFFF` |
+| Text 2 (body) | `#BDBDC4` |
+| Text 3 (supporting) | `#8A8A92` |
+| Text 4 (disabled, non-text only) | `#5C5C64` |
+
+### Light theme
+
+| Surface | Hex |
+|---|---|
+| Background | `#FFFFFF` |
+| Surface 1 | `#F4F4F6` |
+| Surface 2 | `#EAEAEE` |
+| Border | `#E4E4E8` |
+| Border high | `#CFCFD5` |
+| Text 1 | `#18181B` |
+| Text 2 | `#44444A` |
+| Text 3 | `#6E6E76` |
+| Text 4 (non-text only) | `#A4A4AC` |
+
+### Semantic (state indicators only)
+
+| Token | Hex | Use |
+|---|---|---|
+| `--success` | `#10B981` | Positive states only |
+| `--warning` | `#F59E0B` | Caution states only |
+| `--error` | `#EF4444` | Destructive, error states only |
 
 ## Typography
 
-- **Sans**: Geist (weights 400–800) — headings, display, UI labels
-- **Body**: Inter (weights 400–600) — body text, paragraphs, long-form content
-- **Mono**: Geist Mono — code blocks, technical content, data
-- **Display**: 96px, Geist weight 800, letter-spacing -0.04em
-- **Headings**: Geist weight 700, letter-spacing -0.02em
-- **Body text**: 16px, Inter weight 400, line-height 1.7
+Inter, throughout. Weights 400, 500, 600, 700. No secondary or monospace typeface in brand surfaces.
 
-## Themes
+| Role | Size | Weight | Tracking |
+|---|---|---|---|
+| Display | 44 | 700 | -0.03em |
+| H1 | 32 | 700 | -0.025em |
+| H2 | 24 | 700 | -0.02em |
+| H3 | 18 | 600 | -0.005em |
+| Body | 16 | 400 | normal |
+| Small | 14 | 400 | normal |
 
-The brand uses a dual-theme system. The primary color `#6C5CE7` stays identical in both.
+For technical documentation, monospace is allowed inside code blocks only. Use the platform default (`ui-monospace`, no custom face).
 
-### Dark (marketing, docs, landing pages)
-| Surface | Value |
-|---|---|
-| Background | `#101014` |
-| Card | `#18181E` |
-| Border | `#2A2A36` |
-| Body text | `#A0A0B8` |
-| Headings | `#E4E4EC` |
+The primary CTA uses 19px / 700 (qualifies as WCAG large text so the gradient endpoint passes AA-large contrast for white-on-color).
 
-### Light (app, dashboard, tools)
-| Surface | Value |
-|---|---|
-| Background | `#FFFFFF` |
-| Card | `#F5F5FA` |
-| Border | `#E0E0EC` |
-| Body text | `#3A3A55` |
-| Headings | `#111118` |
+## Components
 
-## Product UI Palette
+### Primary CTA
 
-The product uses a separate warm-neutral palette. Electric Indigo appears **only** on the primary CTA button. Brand gradient is **prohibited** in product UI.
+```html
+<button class="btn btn-primary">Connect agent</button>
+```
 
-### Key Rules
-1. `#6C5CE7` appears ONLY on the primary CTA. Nowhere else.
-2. All grays use warm/brown undertones. Never blue-gray, never cool-gray.
-3. Selection = subtle background shift + border darkening — not color.
-4. Checkboxes are neutral (charcoal/warm gray) — never brand-colored.
-5. Brand gradient (`#6C5CE7`→`#A78BFA`) is prohibited in product UI. Marketing only.
-6. Semantic colors (success, warning, error, info) remain unchanged.
+```css
+.btn-primary {
+  background: linear-gradient(90deg, #6C5CE7, #8E76F2);
+  color: #FFFFFF;
+  box-shadow: 0 0 28px rgba(124, 92, 231, 0.45);
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 19px;
+  font-weight: 700;
+}
+.btn-primary:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 0 40px rgba(124, 92, 231, 0.45);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+```
 
-### Light Mode (Warm)
-| Token | Hex | Usage |
-|---|---|---|
-| Background | `#FAF9F7` | Warm white |
-| Card / Surface | `#FFFFFF` | |
-| Card Selected | `#F5F4F0` | Warm selection tint |
-| Section BG | `#F0EEE8` | |
-| Border Default | `#E8E5DE` | |
-| Border Selected | `#D4D0C8` | Softer emphasis |
-| Heading Text | `#1A1816` | High-contrast warm black |
-| Body Text | `#6F6B66` | |
-| Muted / Placeholder | `#A8A49D` | |
-| Checkbox Checked | `#3D3B37` | Deep charcoal, NOT brand |
-| Checkbox Empty | `#D4D0C8` | |
-| Primary CTA | `#6C5CE7` | Only chromatic element |
-| Send / Icon BG | `#EEEDEA` | |
-| Send / Icon Fill | `#8A8680` | |
+### Secondary buttons
 
-### Dark Mode (Warm Dark)
-| Token | Hex | Usage |
-|---|---|---|
-| Background | `#1A1918` | Warm brown undertone, never pure black |
-| Card / Surface | `#222120` | |
-| Card Selected | `#272622` | |
-| Border Default | `#2B2A27` | |
-| Border Selected | `#3E3D38` | |
-| Heading Text | `#E3E1DA` | |
-| Body Text | `#918F86` | |
-| Muted / Placeholder | `#605E56` | |
-| Checkbox Checked | `#A8A69E` | Warm light gray |
-| Checkbox Empty | `#3E3D38` | |
-| Primary CTA | `#6C5CE7` | Only chromatic element |
-| Send / Icon BG | `rgba(255,255,255,0.04)` | |
-| Send / Icon Fill | `#807E75` | |
+For passkey, Google, Microsoft, "View on GitHub" style actions.
 
-## Voice & Tone
+```css
+.btn-secondary {
+  background: var(--s1);
+  color: var(--t1);
+  border: 1px solid var(--border);
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 600;
+}
+.btn-secondary:hover {
+  background: var(--s2);
+  border-color: var(--bd-hi);
+}
+```
+
+### Loading button
+
+```html
+<button class="btn btn-primary" data-loading="true">Sending</button>
+```
+
+Hide the text (`color: transparent`) and draw an animated spinner via `::after`. Respect `prefers-reduced-motion`.
+
+### Inputs
+
+```css
+.input {
+  background: var(--s1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: var(--t1);
+}
+.input::placeholder { color: var(--placeholder); }  /* T3, AA on input fill */
+.input:focus {
+  border-color: var(--accent-1);
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.20);
+  outline: none;
+}
+.input[aria-invalid="true"] { border-color: var(--error); }
+.input:disabled { opacity: 0.5; cursor: not-allowed; }
+```
+
+Helper text below the input uses Text 3 (`.field-hint`). Error text uses `--error` and `font-weight: 500` (`.field-error`).
+
+### Inline links
+
+```css
+a {
+  color: var(--accent-link);
+  text-decoration: none;
+  font-weight: 600;
+}
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+```
+
+`--accent-link` is `#A78BFA` in dark (AA 6.51) and `#6C5CE7` in light (AA 4.86). Do not use `#A78BFA` on a white background; contrast is only 2.72.
+
+## Voice and tone
 
 ### Principles
-1. **Clear over clever** — no jargon for jargon's sake
-2. **Confident, not arrogant** — state facts, skip the hype
-3. **Technical precision with warmth** — respect the developer, be approachable
-4. **Developer-first** — assume technical literacy, skip the hand-holding
 
-### Tone by Context
-- **Marketing**: Bold, energetic, forward-looking
-- **Documentation**: Precise, patient, example-driven
-- **Error messages**: Calm, actionable, no blame
-- **General**: Direct, helpful, quietly confident
+1. Direct over decorated. Short sentences. Concrete nouns. No marketing fog.
+2. Specific over sweeping. "Reduces tool-call latency by 60%" beats "blazing fast."
+3. Verbs over adjectives. If you can't show it doing something, cut it.
+4. One idea per sentence. If a sentence has two commas and an em dash, it's two sentences.
 
-### Vocabulary
-**Prefer**: connect, integrate, automate, ship, build, fast, simple, powerful
-**Avoid**: leverage, synergy, disrupt, revolutionary, game-changing, seamless, cutting-edge
+### We say
 
-### Writing Rules
-- Use active voice
-- Lead with the benefit, not the feature
-- Short sentences. Short paragraphs.
-- Use "you" — talk to the reader directly
-- Code examples over abstract explanations
-- Sentence case for headings (not Title Case)
+- Trustworthy agents for high-value workflows.
+- Compress tool chains. Aggregate actions.
+- Decisions you can audit.
 
-## Logo Usage
+### We don't say
 
-- Use the wordmark (icon + "fastn") for primary placement
-- Use the icon mark alone only when the brand is already established in context
-- Minimum clear space: equal to the height of the "f" in the wordmark
-- Never stretch, rotate, recolor, or add effects to the logo
-- On dark backgrounds: white logo. On light backgrounds: black logo.
+- Revolutionary. Game-changing. Paradigm-shift.
+- Unlock the power of. Supercharge. Leverage.
+- The future of AI is here.
 
-## Spacing & Layout
+### Mechanics
 
-- Base unit: 4px grid
-- Border radius: 8px (default for cards/buttons), 9999px for pills
-- Use generous whitespace — let content breathe
-- Maximum content width: 1200px for marketing, 1400px for dashboards
+- Sentence case for UI strings and headings. Title case for the wordmark and proper nouns.
+- Use "you," talk to the reader directly.
+- Code examples over abstract explanations.
+- Active voice, present tense.
+- Do not use em dashes. Use periods, commas, or parentheses instead.
+
+## Logo
+
+- Use the wordmark for marketing, web, and documentation. Files: `logos/fastn-logo-740px.png`, `logos/fastn-logo-400px.png`.
+- Use the icon mark for compact placements (avatars, favicons, app icons, sign-in cards). File: `logos/fastn-icon-rounded.jpg`.
+- White wordmark on dark backgrounds, black wordmark on light. Apply `filter: invert(1)` to the PNG when on dark surfaces.
+- The icon-rounded asset is self-contained (dark square + white icon). Use as-is on any background.
+- Never recolor, stretch, rotate, or add effects to the logo.
+- Minimum clear space equal to the height of the "f" in the wordmark.
+
+## Spacing and layout
+
+- Base unit: 4px grid.
+- Border radius: 8px for inputs and buttons, 14px for cards, 9999px for pills and avatars.
+- Use generous whitespace. Let content breathe.
+- Narrow centered columns (around 560px) for read-heavy surfaces. Wider only when content demands it.
+
+## Accessibility checklist (every shipped surface)
+
+- WCAG 2.1 AA contrast for every text combination. Verify with the swatches in `fastn-brand-system.html`.
+- Visible focus ring on every interactive element (`box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.40)`).
+- Buttons and links keyboard-accessible. No `<div onclick>`.
+- Touch targets >= 44 x 44 px.
+- Respect `prefers-color-scheme`, `prefers-reduced-motion`, and `forced-colors`.
+
+## Don't list
+
+- A second accent color.
+- A second typeface.
+- Decorative gradients on text or backgrounds (gradient is reserved for the primary CTA).
+- Em dashes in copy.
+- Title Case headings.
+- Drop shadows on text or cards (the only allowed shadow is the CTA glow).
+- Border colors that aren't from the surface scale.
+- Hover states that change hue (use brightness or opacity).
+- `outline: none` without a replacement focus style.

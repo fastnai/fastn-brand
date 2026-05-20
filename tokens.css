@@ -1,90 +1,98 @@
 /**
- * Fastn Design Tokens — v2.0
- * Aligned with fastn.ai
- * Usage: import this file once at the root of your app.
+ * Fastn Design Tokens
+ * One accent, neutral grayscale, Inter throughout.
  */
 
 :root {
-  /* Brand accent — Fastn Blue */
-  --accent:        #4FB2FF;
-  --accent-hi:     #7AC4FF;
-  --accent-lo:     #2F8FD6;
-  --accent-on:     #06121C;
-  --accent-tint:   rgba(79, 178, 255, 0.10);
-  --accent-faint:  rgba(79, 178, 255, 0.04);
+  /* Accent. Use only on the primary CTA, inline links, and focus rings.
+     Nothing else gets chromatic color. */
+  --accent-1:    #6C5CE7;
+  --accent-2:    #8E76F2;
+  --accent-glow: rgba(124, 92, 231, 0.45);
 
-  /* Semantic */
-  --success:    #10B981;
-  --success-bg: rgba(16, 185, 129, 0.10);
-  --warning:    #F59E0B;
-  --warning-bg: rgba(245, 158, 11, 0.10);
-  --error:      #EF4444;
-  --error-bg:   rgba(239, 68, 68, 0.10);
-  --info:       #4FB2FF;
-  --info-bg:    rgba(79, 178, 255, 0.10);
+  /* Semantic. Reserved for state indicators (success/error pills, etc.) */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error:   #EF4444;
 
-  /* Spacing */
-  --sp-1:  4px;  --sp-2:  8px;  --sp-3:  12px; --sp-4:  16px;
-  --sp-6:  24px; --sp-8:  32px; --sp-12: 48px;
-  --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+  /* Typography. Inter only. Hierarchy from size and weight, not from a second face. */
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Radius */
-  --radius-1:    4px;   /* chips, tags */
-  --radius-2:    6px;   /* inputs */
-  --radius-3:    8px;   /* buttons */
-  --radius-4:    12px;  /* cards */
-  --radius-5:    16px;  /* panels */
-  --radius-6:    24px;  /* modals */
-  --radius-full: 9999px;
+  --r-2: 8px;   /* inputs, buttons */
+  --r-3: 10px;
+  --r-4: 14px;  /* cards */
+  --r-full: 9999px;
 
   /* Motion */
-  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
-  --dur-fast:    100ms;
-  --dur:         180ms;
-  --dur-medium:  240ms;
-  --dur-slow:    320ms;
-
-  /* Typography */
-  --font-display: 'Geist', system-ui, -apple-system, sans-serif;
-  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono:    'Geist Mono', 'Fira Code', ui-monospace, monospace;
+  --dur:  180ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Dark theme (default) */
 :root, [data-theme="dark"] {
-  --bg:        #0E0E10;
-  --s1:        #111113;
-  --s2:        #1A1A1D;
-  --s3:        #222226;
-  --border:    #2A2A2E;
-  --border-hi: #3E3E44;
+  --bg:     #18181B;
+  --s1:     #1F1F23;  /* cards, inputs, secondary buttons */
+  --s2:     #26262B;  /* hover */
+  --border: #2A2A30;
+  --bd-hi:  #3A3A42;  /* hover, focus */
 
   --t1: #FFFFFF;
-  --t2: #D6D6D8;
-  --t3: #9A9AA2;
-  --t4: #6E6E76;
+  --t2: #BDBDC4;
+  --t3: #8A8A92;
+  --t4: #5C5C64;        /* non-text only; fails text contrast */
+
+  --on-accent:   #FFFFFF;
+  --accent-link: #A78BFA; /* 6.51 on dark bg, AA */
+  --placeholder: #8A8A92; /* T3, 4.80 on input fill, AA */
 }
 
 /* Light theme */
 [data-theme="light"] {
-  --bg:        #FFFFFF;
-  --s1:        #F7F7F8;
-  --s2:        #EEEEF0;
-  --s3:        #E4E4E7;
-  --border:    #E4E4E7;
-  --border-hi: #C9C9CF;
+  --bg:     #FFFFFF;
+  --s1:     #F4F4F6;
+  --s2:     #EAEAEE;
+  --border: #E4E4E8;
+  --bd-hi:  #CFCFD5;
 
-  --t1: #0E0E10;
-  --t2: #2A2A2E;
-  --t3: #5A5A62;
-  --t4: #8A8A92;
+  --t1: #18181B;
+  --t2: #44444A;
+  --t3: #6E6E76;
+  --t4: #A4A4AC;        /* non-text only; fails text contrast */
+
+  --on-accent:   #FFFFFF;
+  --accent-link: #6C5CE7; /* 4.86 on white, AA. accent-2 fails (2.72). */
+  --placeholder: #6E6E76; /* T3, 4.60 on input fill, AA */
+}
+
+/* Semantic aliases.
+   Atomic tokens above (--t1, --s1, ...) are the source of truth.
+   These aliases map them to role-based names for clearer consumption. */
+:root {
+  --color-text-primary:     var(--t1);
+  --color-text-body:        var(--t2);
+  --color-text-muted:       var(--t3);
+  --color-text-disabled:    var(--t4);
+
+  --color-surface-page:     var(--bg);
+  --color-surface-card:     var(--s1);
+  --color-surface-raised:   var(--s2);
+
+  --color-border-default:   var(--border);
+  --color-border-strong:    var(--bd-hi);
+
+  --color-action-primary:         var(--accent-1);
+  --color-action-gradient:        linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  --color-action-glow:            var(--accent-glow);
+  --color-link:                   var(--accent-link);
+  --color-on-accent:              var(--on-accent);
+  --color-focus-ring:             rgba(108, 92, 231, 0.40);
+
+  --color-state-success: var(--success);
+  --color-state-warning: var(--warning);
+  --color-state-error:   var(--error);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
