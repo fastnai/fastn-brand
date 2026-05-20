@@ -645,7 +645,18 @@ footer .links a + a { margin-left: 16px; }
   (function () {
     var root = document.documentElement;
     var stored = localStorage.getItem('fastn-theme');
-    if (stored === 'light' || stored === 'dark') root.setAttribute('data-theme', stored);
+    if (stored === 'light' || stored === 'dark') {
+      root.setAttribute('data-theme', stored);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      root.setAttribute('data-theme', 'light');
+    }
+    // Follow OS changes only while the user has not explicitly chosen a theme.
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
+        if (localStorage.getItem('fastn-theme')) return;
+        root.setAttribute('data-theme', e.matches ? 'light' : 'dark');
+      });
+    }
     document.getElementById('themeToggle').addEventListener('click', function () {
       var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       root.setAttribute('data-theme', next);
