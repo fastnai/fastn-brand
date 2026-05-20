@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="The Fastn brand system — color, type, logo, voice, components. Restrained by design.">
+<meta name="description" content="The Fastn brand system — color, type, logo, voice, components.">
 <title>Fastn Brand System</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%236C5CE7'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,52 +13,50 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --accent:     #6C5CE7;
-  --accent-hi:  #7B6CEF;
-  --accent-lo:  #5A4CD6;
-
-  --success: #10B981;
-  --warning: #F59E0B;
-  --error:   #EF4444;
+  /* Accent: gradient indigo, used ONLY on the primary CTA. */
+  --accent-1:    #6C5CE7;
+  --accent-2:    #A78BFA;
+  --accent-glow: rgba(124, 92, 231, 0.45);
+  --accent-link: #A78BFA;
 
   --font: 'Inter', system-ui, -apple-system, sans-serif;
 
-  --r-2: 6px;
-  --r-3: 8px;
-  --r-4: 12px;
+  --r-2: 8px;
+  --r-3: 10px;
+  --r-4: 14px;
   --r-full: 9999px;
 
-  --dur: 160ms;
+  --dur: 180ms;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="dark"] {
-  --bg:     #1A1918;
-  --s1:     #222120;
-  --s2:     #2B2A27;
-  --border: #2B2A27;
-  --bd-hi:  #3E3D38;
+  --bg:        #18181B;
+  --s1:        #1F1F23;      /* card / input fill */
+  --s2:        #26262B;      /* hover */
+  --border:    #2A2A30;
+  --bd-hi:     #3A3A42;
 
-  --t1: #E3E1DA;
-  --t2: #918F86;
-  --t3: #8A8780;
-  --t4: #605E56;
+  --t1: #FFFFFF;
+  --t2: #BDBDC4;
+  --t3: #8A8A92;
+  --t4: #5C5C64;
 
   --on-accent: #FFFFFF;
   --logo-filter: invert(1);
 }
 
 [data-theme="light"] {
-  --bg:     #FFFFFF;
-  --s1:     #FAFAF8;
-  --s2:     #F0EFEB;
-  --border: #E8E5DE;
-  --bd-hi:  #D4D0C8;
+  --bg:        #FFFFFF;
+  --s1:        #F4F4F6;
+  --s2:        #EAEAEE;
+  --border:    #E4E4E8;
+  --bd-hi:     #CFCFD5;
 
-  --t1: #1A1816;
-  --t2: #4A4842;
-  --t3: #6F6B66;
-  --t4: #A8A49D;
+  --t1: #18181B;
+  --t2: #44444A;
+  --t3: #6E6E76;
+  --t4: #A4A4AC;
 
   --on-accent: #FFFFFF;
   --logo-filter: none;
@@ -76,29 +74,27 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-::selection { background: var(--accent); color: var(--on-accent); }
+::selection { background: var(--accent-1); color: var(--on-accent); }
 
-a { color: inherit; }
-
-/* ─ Nav ─ Minimal: logo, theme toggle. Nothing competes. */
-.nav {
+/* ─ Top bar (icon + theme). Restrained like the sign-in screen. */
+.topbar {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in srgb, var(--bg) 85%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
-.nav-inner {
-  max-width: 880px;
+.topbar-inner {
+  max-width: 720px;
   margin: 0 auto;
-  padding: 20px 32px;
+  padding: 20px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.nav-logo { display: block; }
-.nav-logo img { height: 36px; width: auto; display: block; filter: var(--logo-filter); }
+.brand-icon { display: inline-flex; }
+.brand-icon img { height: 32px; width: auto; display: block; filter: var(--logo-filter); }
 
 .theme-toggle {
   display: inline-flex;
@@ -119,10 +115,13 @@ a { color: inherit; }
 [data-theme="light"] .theme-toggle .icon-sun { display: block; }
 [data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
-/* ─ Layout ─ Narrow single column. Like the sign-in page. */
-.container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
-main > section { padding: 80px 0; }
+/* ─ Centered layout. Everything in a narrow column, like the sign-in card. */
+.shell { max-width: 560px; margin: 0 auto; padding: 0 24px; }
 
+main > section { padding: 80px 0; }
+main > section + section { border-top: 1px solid var(--border); }
+
+/* Headings */
 h1, h2, h3, h4 {
   font-family: var(--font);
   color: var(--t1);
@@ -130,112 +129,151 @@ h1, h2, h3, h4 {
   letter-spacing: -0.02em;
   line-height: 1.15;
 }
+h1 { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+h2 { font-size: 32px; }
+h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.005em; }
+h4 { font-size: 15px; font-weight: 600; color: var(--t1); }
 
-h1 { font-size: clamp(40px, 5.5vw, 56px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; }
-h2 { font-size: 32px; margin-bottom: 16px; }
-h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+label { display: block; font-size: 15px; font-weight: 600; color: var(--t1); margin-bottom: 10px; }
 
-/* ─ Hero ─ Anchored, calm. Title, lede, one CTA. */
-.hero { padding: 96px 0 56px; }
-.hero p { font-size: 18px; color: var(--t3); max-width: 540px; line-height: 1.55; }
-.hero .actions { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
+/* ─ Hero: centered, big logo, big heading, ONE button. Mirrors the sign-in. */
+.hero {
+  padding: 96px 0 80px;
+  text-align: center;
+}
+.hero .icon-mark {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 36px;
+  display: block;
+  filter: var(--logo-filter);
+}
+.hero h1 { margin-bottom: 56px; }
+.hero .tagline {
+  color: var(--t2);
+  font-size: 16px;
+  max-width: 440px;
+  margin: -40px auto 36px;
+  line-height: 1.6;
+}
 
-/* ─ Section header ─ Just a title. No eyebrow, no mono tag. */
-.section-head { margin-bottom: 40px; }
-.section-head p { color: var(--t3); font-size: 17px; max-width: 540px; margin-top: 4px; }
-
-/* ─ Buttons ─ Three roles. Indigo (action), neutral (option), text (tertiary). */
+/* ─ Buttons. The CTA is the visual showstopper — gradient + glow. */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px;
   font: inherit;
   font-size: 15px;
-  font-weight: 500;
-  padding: 11px 18px;
-  border-radius: var(--r-3);
+  font-weight: 600;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: var(--r-2);
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
-  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+  transition: filter var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 .btn-primary {
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
   color: var(--on-accent);
+  box-shadow: 0 0 28px var(--accent-glow);
 }
-.btn-primary:hover { background: var(--accent-hi); }
+.btn-primary:hover { filter: brightness(1.05); box-shadow: 0 0 40px var(--accent-glow); }
 .btn-secondary {
   background: var(--s1);
   color: var(--t1);
   border-color: var(--border);
 }
 .btn-secondary:hover { background: var(--s2); border-color: var(--bd-hi); }
-.btn-text {
-  background: transparent;
-  color: var(--t2);
-  padding: 11px 0;
+.btn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
-.btn-text:hover { color: var(--t1); }
 
-/* ─ Color rows ─ NAME · HEX · USE, no card chrome. */
-.color-rows {
-  border-top: 1px solid var(--border);
+/* ─ "or" divider — exactly like the sign-in screen. */
+.or-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0;
+  color: var(--t3);
+  font-size: 14px;
 }
+.or-divider::before, .or-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─ Section heads, centered. */
+.section-head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.section-head p {
+  color: var(--t3);
+  font-size: 16px;
+  max-width: 440px;
+  margin: 8px auto 0;
+}
+
+/* ─ Color rows: chip · name · use · hex, no card chrome. */
+.color-rows { border-top: 1px solid var(--border); }
 .color-row {
   display: grid;
-  grid-template-columns: 56px 1fr auto;
+  grid-template-columns: 40px 1fr auto;
   align-items: center;
-  gap: 20px;
-  padding: 18px 0;
+  gap: 16px;
+  padding: 14px 0;
   border-bottom: 1px solid var(--border);
   cursor: pointer;
   transition: background var(--dur) var(--ease);
 }
-.color-row:hover { background: var(--s1); }
+.color-row:hover { background: var(--s1); padding-left: 8px; padding-right: 8px; margin-left: -8px; margin-right: -8px; border-radius: var(--r-2); }
 .color-row .chip {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--r-3);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-2);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
 }
-.color-row .meta { display: flex; flex-direction: column; gap: 2px; }
-.color-row .name { color: var(--t1); font-weight: 500; font-size: 15px; }
-.color-row .use  { color: var(--t3); font-size: 14px; }
-.color-row .hex  { color: var(--t3); font-size: 14px; font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+.color-row .meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.color-row .name { color: var(--t1); font-weight: 500; font-size: 14px; }
+.color-row .use  { color: var(--t3); font-size: 13px; }
+.color-row .hex  { color: var(--t3); font-size: 13px; font-variant-numeric: tabular-nums; }
 
-.subheading {
-  font-size: 13px;
+.subhead {
+  font-size: 12px;
   font-weight: 600;
   color: var(--t3);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin: 56px 0 12px;
+  letter-spacing: 0.08em;
+  margin: 40px 0 12px;
+  text-align: left;
 }
-.subheading:first-of-type { margin-top: 0; }
+.subhead:first-of-type { margin-top: 0; }
 
-/* ─ Type specimen ─ One column. No table chrome. */
+/* ─ Type specimen */
 .type-row {
-  padding: 24px 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--border);
+  text-align: left;
 }
 .type-row:last-child { border-bottom: none; }
-.type-row .label {
-  font-size: 13px;
-  color: var(--t3);
-  margin-bottom: 8px;
-}
-.type-display { font-size: 56px; font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: var(--t1); }
-.type-h1      { font-size: 42px; font-weight: 700; line-height: 1.1;  letter-spacing: -0.025em; color: var(--t1); }
-.type-h2      { font-size: 32px; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em;  color: var(--t1); }
-.type-h3      { font-size: 24px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em;  color: var(--t1); }
-.type-h4      { font-size: 18px; font-weight: 600; line-height: 1.3; color: var(--t1); }
-.type-body    { font-size: 16px; font-weight: 400; line-height: 1.6; color: var(--t2); max-width: 540px; }
+.type-row .label { font-size: 12px; color: var(--t3); margin-bottom: 8px; letter-spacing: 0.04em; text-transform: uppercase; }
+.type-display { font-size: 44px; font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: var(--t1); }
+.type-h1      { font-size: 32px; font-weight: 700; line-height: 1.1;  letter-spacing: -0.025em; color: var(--t1); }
+.type-h2      { font-size: 24px; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em;  color: var(--t1); }
+.type-h3      { font-size: 18px; font-weight: 600; line-height: 1.25; letter-spacing: -0.005em; color: var(--t1); }
+.type-body    { font-size: 16px; font-weight: 400; line-height: 1.6; color: var(--t2); }
 .type-small   { font-size: 14px; font-weight: 400; line-height: 1.55; color: var(--t3); }
 
-/* ─ Logo grid ─ */
+/* ─ Logo grid */
 .logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 .logo-tile {
@@ -246,40 +284,33 @@ h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
   border-radius: var(--r-4);
   border: 1px solid var(--border);
 }
-.logo-tile img { max-width: 60%; max-height: 50%; object-fit: contain; }
+.logo-tile img { max-width: 60%; max-height: 60%; object-fit: contain; }
 .logo-on-bg { background: var(--bg); }
-.logo-on-card { background: var(--s2); }
-.logo-on-accent { background: var(--accent); }
+.logo-on-card { background: var(--s1); }
+.logo-on-accent { background: var(--accent-1); }
 .logo-on-light { background: #FFFFFF; }
 [data-theme="dark"] .logo-on-bg img,
 [data-theme="dark"] .logo-on-card img { filter: invert(1); }
 
-/* ─ Voice ─ Plain prose. No cards. Just spaced paragraphs. */
+/* ─ Voice */
 .voice-row {
-  padding: 28px 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 32px;
+  text-align: left;
 }
 .voice-row:last-child { border-bottom: none; }
-.voice-row h3 { font-size: 18px; font-weight: 600; }
-.voice-row p { color: var(--t2); font-size: 15px; line-height: 1.6; max-width: 480px; }
-.voice-row ul { list-style: none; }
-.voice-row li { padding: 4px 0; color: var(--t2); font-size: 15px; }
-.voice-row li + li { border-top: 1px dashed var(--border); margin-top: 4px; padding-top: 8px; }
+.voice-row h3 { margin-bottom: 10px; }
+.voice-row p, .voice-row li { color: var(--t2); font-size: 15px; line-height: 1.6; }
+.voice-row ul { list-style: none; padding: 0; }
+.voice-row li { padding: 4px 0; }
 
-/* ─ Components demo ─ Buttons inline, plain. */
-.demo-stack > * + * { margin-top: 32px; }
-.demo-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.demo-label { font-size: 13px; color: var(--t3); margin-bottom: 12px; }
-
+/* ─ Inputs (mirror the sign-in input) */
 .input {
   width: 100%;
-  background: var(--bg);
+  background: var(--s1);
   border: 1px solid var(--border);
   border-radius: var(--r-2);
-  padding: 10px 14px;
+  padding: 14px 16px;
   font-family: var(--font);
   font-size: 15px;
   color: var(--t1);
@@ -287,57 +318,60 @@ h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
   transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 .input::placeholder { color: var(--t4); }
-.input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,92,231,0.18); }
+.input:focus { border-color: var(--accent-1); box-shadow: 0 0 0 3px rgba(108,92,231,0.20); }
 
-/* ─ Inline accent links ─ The only other place accent shows up. */
-.prose a, a.accent {
-  color: var(--accent);
+/* ─ Inline links / "Register"-style */
+.link {
+  color: var(--accent-link);
+  text-decoration: none;
+  font-weight: 600;
+}
+.link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.muted-link {
+  color: var(--t3);
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
 }
-.prose a:hover, a.accent:hover { color: var(--accent-hi); }
+.muted-link:hover { color: var(--t1); }
 
-/* ─ A11y table ─ Quiet borders, no fills. */
+/* ─ A11y table */
 .a11y-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
+  text-align: left;
 }
 .a11y-table th, .a11y-table td {
-  padding: 14px 0;
-  text-align: left;
+  padding: 12px 0;
   border-bottom: 1px solid var(--border);
 }
 .a11y-table th {
   font-size: 12px;
-  letter-spacing: 0.04em;
   text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--t3);
   font-weight: 600;
 }
-.a11y-table td:nth-child(2), .a11y-table td:nth-child(3) {
-  font-variant-numeric: tabular-nums;
-  color: var(--t2);
-}
+.a11y-table td { color: var(--t2); }
+.a11y-table td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
 .a11y-table .pass { color: #4ADE80; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; }
 
-/* ─ Footer ─ */
+/* ─ Footer */
 footer {
-  padding: 48px 0 64px;
-  color: var(--t4);
-  font-size: 14px;
+  padding: 56px 0 80px;
+  color: var(--t3);
+  font-size: 13px;
+  text-align: center;
   border-top: 1px solid var(--border);
 }
-footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+footer .links { margin-top: 8px; }
+footer .links a + a { margin-left: 16px; }
 
 @media (max-width: 640px) {
-  .voice-row { grid-template-columns: 1fr; gap: 8px; }
-  main > section { padding: 56px 0; }
-  .hero { padding: 56px 0 24px; }
-  h1 { font-size: 40px; }
-  .type-display { font-size: 40px; }
-  .type-h1 { font-size: 32px; }
+  .hero h1 { font-size: 36px; }
+  .type-display { font-size: 36px; }
+  .btn-row { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -348,10 +382,10 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 </head>
 <body>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a class="nav-logo" href="#top" aria-label="Fastn — back to top">
-      <img src="logos/fastn-logo-400px.png" alt="Fastn">
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand-icon" href="#top" aria-label="Fastn — back to top">
+      <img src="logos/fastn-icon-rounded.jpg" alt="Fastn">
     </a>
     <button class="theme-toggle" type="button" aria-label="Toggle theme" id="themeToggle">
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
@@ -362,124 +396,103 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 
 <main id="top">
 
+<!-- HERO — mirrors the sign-in card: icon, big heading, one CTA. -->
 <section class="hero">
-  <div class="container">
-    <h1>The Fastn brand system.</h1>
-    <p>Color, type, logo, voice, components. Restrained by design — one accent, calm neutrals, nothing that doesn't earn its place.</p>
-    <div class="actions">
-      <a class="btn btn-primary" href="#color">Explore</a>
-      <a class="btn btn-text" href="https://github.com/fastnai/fastn-brand" target="_blank" rel="noopener">View on GitHub →</a>
-    </div>
+  <div class="shell">
+    <img class="icon-mark" src="logos/fastn-icon-rounded.jpg" alt="">
+    <h1>The Fastn brand system</h1>
+    <p class="tagline">Color, type, logo, voice, components — restrained by design.</p>
+    <a class="btn btn-primary" href="#color">Explore the system</a>
+    <div class="or-divider">or</div>
+    <a class="btn btn-secondary" href="https://github.com/fastnai/fastn-brand" target="_blank" rel="noopener">View on GitHub</a>
   </div>
 </section>
 
+<!-- COLOR -->
 <section id="color">
-  <div class="container">
+  <div class="shell">
     <header class="section-head">
       <h2>Color</h2>
-      <p>One accent, used only on the primary action and inline emphasis. Everything else is warm grayscale.</p>
+      <p>One accent, used only on the primary action and inline emphasis. Everything else is neutral grayscale.</p>
     </header>
 
-    <h3 class="subheading">Accent</h3>
+    <div class="subhead">Accent · gradient</div>
     <div class="color-rows">
       <div class="color-row" data-copy="#6C5CE7">
         <span class="chip" style="background:#6C5CE7"></span>
-        <span class="meta"><span class="name">Electric Indigo</span><span class="use">Primary CTA, inline links, focus rings</span></span>
+        <span class="meta"><span class="name">Indigo · start</span><span class="use">Primary CTA gradient start</span></span>
         <span class="hex">#6C5CE7</span>
       </div>
-      <div class="color-row" data-copy="#5A4CD6">
-        <span class="chip" style="background:#5A4CD6"></span>
-        <span class="meta"><span class="name">Indigo Pressed</span><span class="use">Hover/active on accent surfaces</span></span>
-        <span class="hex">#5A4CD6</span>
+      <div class="color-row" data-copy="#A78BFA">
+        <span class="chip" style="background:#A78BFA"></span>
+        <span class="meta"><span class="name">Indigo · end</span><span class="use">Primary CTA gradient end, inline links</span></span>
+        <span class="hex">#A78BFA</span>
+      </div>
+      <div class="color-row" data-copy="linear-gradient(90deg, #6C5CE7, #A78BFA)">
+        <span class="chip" style="background:linear-gradient(90deg, #6C5CE7, #A78BFA)"></span>
+        <span class="meta"><span class="name">CTA gradient</span><span class="use">Primary button + 28px outer glow</span></span>
+        <span class="hex">90deg</span>
       </div>
     </div>
 
-    <h3 class="subheading">Surfaces · Dark</h3>
+    <div class="subhead">Surfaces · dark</div>
     <div class="color-rows">
-      <div class="color-row" data-copy="#1A1918"><span class="chip" style="background:#1A1918"></span><span class="meta"><span class="name">Background</span><span class="use">Page background — warm, never pure black</span></span><span class="hex">#1A1918</span></div>
-      <div class="color-row" data-copy="#222120"><span class="chip" style="background:#222120"></span><span class="meta"><span class="name">Surface 1</span><span class="use">Cards, hover state on rows</span></span><span class="hex">#222120</span></div>
-      <div class="color-row" data-copy="#2B2A27"><span class="chip" style="background:#2B2A27"></span><span class="meta"><span class="name">Surface 2 · Border</span><span class="use">Raised surfaces, selected, dividers</span></span><span class="hex">#2B2A27</span></div>
-      <div class="color-row" data-copy="#3E3D38"><span class="chip" style="background:#3E3D38"></span><span class="meta"><span class="name">Border High</span><span class="use">Hover, focus borders</span></span><span class="hex">#3E3D38</span></div>
+      <div class="color-row" data-copy="#18181B"><span class="chip" style="background:#18181B"></span><span class="meta"><span class="name">Background</span><span class="use">Page background</span></span><span class="hex">#18181B</span></div>
+      <div class="color-row" data-copy="#1F1F23"><span class="chip" style="background:#1F1F23"></span><span class="meta"><span class="name">Surface 1</span><span class="use">Inputs, secondary buttons</span></span><span class="hex">#1F1F23</span></div>
+      <div class="color-row" data-copy="#26262B"><span class="chip" style="background:#26262B"></span><span class="meta"><span class="name">Surface 2</span><span class="use">Hover state</span></span><span class="hex">#26262B</span></div>
+      <div class="color-row" data-copy="#2A2A30"><span class="chip" style="background:#2A2A30"></span><span class="meta"><span class="name">Border</span><span class="use">1px dividers, default borders</span></span><span class="hex">#2A2A30</span></div>
+      <div class="color-row" data-copy="#3A3A42"><span class="chip" style="background:#3A3A42"></span><span class="meta"><span class="name">Border high</span><span class="use">Hover, focus borders</span></span><span class="hex">#3A3A42</span></div>
     </div>
 
-    <h3 class="subheading">Text · Dark</h3>
+    <div class="subhead">Text · dark</div>
     <div class="color-rows">
-      <div class="color-row" data-copy="#E3E1DA"><span class="chip" style="background:#E3E1DA"></span><span class="meta"><span class="name">Text 1</span><span class="use">Headings, primary content</span></span><span class="hex">#E3E1DA</span></div>
-      <div class="color-row" data-copy="#918F86"><span class="chip" style="background:#918F86"></span><span class="meta"><span class="name">Text 2</span><span class="use">Body, lede</span></span><span class="hex">#918F86</span></div>
-      <div class="color-row" data-copy="#8A8780"><span class="chip" style="background:#8A8780"></span><span class="meta"><span class="name">Text 3</span><span class="use">Subhead, supporting</span></span><span class="hex">#8A8780</span></div>
-      <div class="color-row" data-copy="#605E56"><span class="chip" style="background:#605E56"></span><span class="meta"><span class="name">Text 4</span><span class="use">Captions, metadata (≥18px)</span></span><span class="hex">#605E56</span></div>
-    </div>
-
-    <h3 class="subheading">Semantic</h3>
-    <div class="color-rows">
-      <div class="color-row" data-copy="#10B981"><span class="chip" style="background:#10B981"></span><span class="meta"><span class="name">Success</span><span class="use">Positive states only</span></span><span class="hex">#10B981</span></div>
-      <div class="color-row" data-copy="#F59E0B"><span class="chip" style="background:#F59E0B"></span><span class="meta"><span class="name">Warning</span><span class="use">Caution states only</span></span><span class="hex">#F59E0B</span></div>
-      <div class="color-row" data-copy="#EF4444"><span class="chip" style="background:#EF4444"></span><span class="meta"><span class="name">Error</span><span class="use">Destructive, error states only</span></span><span class="hex">#EF4444</span></div>
+      <div class="color-row" data-copy="#FFFFFF"><span class="chip" style="background:#FFFFFF"></span><span class="meta"><span class="name">Text 1</span><span class="use">Headings, primary text</span></span><span class="hex">#FFFFFF</span></div>
+      <div class="color-row" data-copy="#BDBDC4"><span class="chip" style="background:#BDBDC4"></span><span class="meta"><span class="name">Text 2</span><span class="use">Body</span></span><span class="hex">#BDBDC4</span></div>
+      <div class="color-row" data-copy="#8A8A92"><span class="chip" style="background:#8A8A92"></span><span class="meta"><span class="name">Text 3</span><span class="use">Supporting, captions</span></span><span class="hex">#8A8A92</span></div>
+      <div class="color-row" data-copy="#5C5C64"><span class="chip" style="background:#5C5C64"></span><span class="meta"><span class="name">Text 4</span><span class="use">Disabled, non-text (≥18px)</span></span><span class="hex">#5C5C64</span></div>
     </div>
   </div>
 </section>
 
+<!-- TYPOGRAPHY -->
 <section id="type">
-  <div class="container">
+  <div class="shell">
     <header class="section-head">
       <h2>Typography</h2>
-      <p>Inter, throughout. Hierarchy from size and weight — never from a second typeface.</p>
+      <p>Inter throughout. Hierarchy from size and weight, never from a second typeface.</p>
     </header>
-
-    <div class="type-row">
-      <div class="label">Display · 56 / 700 / −0.03em</div>
-      <div class="type-display">Restrained by design.</div>
-    </div>
-    <div class="type-row">
-      <div class="label">H1 · 42 / 700 / −0.025em</div>
-      <div class="type-h1">Color is punctuation.</div>
-    </div>
-    <div class="type-row">
-      <div class="label">H2 · 32 / 700 / −0.02em</div>
-      <div class="type-h2">One accent, one job.</div>
-    </div>
-    <div class="type-row">
-      <div class="label">H3 · 24 / 600 / −0.01em</div>
-      <div class="type-h3">Hierarchy from weight, not hue.</div>
-    </div>
-    <div class="type-row">
-      <div class="label">H4 · 18 / 600</div>
-      <div class="type-h4">Section labels and card titles.</div>
-    </div>
-    <div class="type-row">
-      <div class="label">Body · 16 / 400 / 1.6</div>
-      <div class="type-body">The Fastn brand uses one accent — Electric Indigo. Neutrals carry the work. Restraint is the point. Color marks the moments that need attention; everything else stays out of the way.</div>
-    </div>
-    <div class="type-row">
-      <div class="label">Small · 14 / 400</div>
-      <div class="type-small">Captions, helper text, footnotes.</div>
-    </div>
+    <div class="type-row"><div class="label">Display · 44 / 700</div><div class="type-display">Restrained by design</div></div>
+    <div class="type-row"><div class="label">H1 · 32 / 700</div><div class="type-h1">Color is punctuation</div></div>
+    <div class="type-row"><div class="label">H2 · 24 / 700</div><div class="type-h2">One accent, one job</div></div>
+    <div class="type-row"><div class="label">H3 · 18 / 600</div><div class="type-h3">Hierarchy from weight</div></div>
+    <div class="type-row"><div class="label">Body · 16 / 400</div><div class="type-body">The Fastn brand uses one accent — Electric Indigo — only on the primary action and inline emphasis. Everything else is neutral grayscale.</div></div>
+    <div class="type-row"><div class="label">Small · 14 / 400</div><div class="type-small">Captions, helper text, footnotes.</div></div>
   </div>
 </section>
 
+<!-- LOGO -->
 <section id="logo">
-  <div class="container">
+  <div class="shell">
     <header class="section-head">
       <h2>Logo</h2>
-      <p>One mark. White on dark, black on light. Never recolored, never on busy imagery.</p>
+      <p>The Fastn icon. White on dark, black on light. Use the icon alone for compact placements (avatars, favicons, sign-in screens); the wordmark for marketing.</p>
     </header>
-
     <div class="logo-grid">
       <div class="logo-tile logo-on-bg"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on background"></div>
-      <div class="logo-tile logo-on-card"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on card"></div>
-      <div class="logo-tile logo-on-accent"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on accent"></div>
+      <div class="logo-tile logo-on-card"><img src="logos/fastn-icon-rounded.jpg" alt="Fastn icon on card"></div>
+      <div class="logo-tile logo-on-accent"><img src="logos/fastn-icon-rounded.jpg" alt="Fastn icon on accent"></div>
       <div class="logo-tile logo-on-light"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on light"></div>
     </div>
   </div>
 </section>
 
+<!-- VOICE -->
 <section id="voice">
-  <div class="container">
+  <div class="shell">
     <header class="section-head">
       <h2>Voice</h2>
       <p>Direct. Confident. Without ceremony.</p>
     </header>
-
     <div class="voice-row">
       <h3>We say</h3>
       <ul>
@@ -493,7 +506,6 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
       <ul>
         <li>Revolutionary. Game-changing. Paradigm-shift.</li>
         <li>Unlock the power of. Supercharge. Leverage.</li>
-        <li>The future of AI is here.</li>
       </ul>
     </div>
     <div class="voice-row">
@@ -504,59 +516,59 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
       <h3>Specific over sweeping</h3>
       <p>"Reduces tool-call latency by 60%" beats "blazing fast." Numbers and named systems over hype.</p>
     </div>
-    <div class="voice-row">
-      <h3>One idea per sentence</h3>
-      <p>If a sentence has two commas and an em-dash, it has two sentences in it. Split them.</p>
-    </div>
   </div>
 </section>
 
+<!-- COMPONENTS — modeled on the sign-in screen exactly. -->
 <section id="components">
-  <div class="container">
+  <div class="shell">
     <header class="section-head">
       <h2>Components</h2>
-      <p>Three button roles. One input style. That's the whole vocabulary.</p>
+      <p>A live example, exactly as it appears in the product.</p>
     </header>
 
-    <div class="demo-stack">
-      <div>
-        <div class="demo-label">Buttons</div>
-        <div class="demo-row">
-          <button class="btn btn-primary">Connect agent</button>
-          <button class="btn btn-secondary">Book a demo</button>
-          <button class="btn btn-text">Learn more →</button>
-        </div>
-      </div>
-      <div>
-        <div class="demo-label">Input</div>
-        <input class="input" placeholder="agent-name">
-      </div>
-      <div class="prose">
-        <div class="demo-label">Inline link</div>
-        <p style="color:var(--t2); font-size:15px;">Read the <a href="#">integration guide</a> for setup. The accent appears only on actionable text — buttons, inline links, focus rings.</p>
+    <label for="demo-email">Email</label>
+    <input class="input" id="demo-email" type="email" placeholder="">
+
+    <div style="margin-top:16px"><button class="btn btn-primary" type="button">Sign in with email</button></div>
+
+    <div class="or-divider">or</div>
+
+    <button class="btn btn-secondary" type="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m10.85 12.15 7.4-7.4 1.4 1.4-3 3 1.4 1.4-3 3-1.4-1.4-2.45 2.45"/></svg>
+      Sign in with passkey
+    </button>
+
+    <div style="margin-top:12px">
+      <div class="btn-row">
+        <button class="btn btn-secondary" type="button">Continue with Google</button>
+        <button class="btn btn-secondary" type="button">Continue with Microsoft</button>
       </div>
     </div>
+
+    <p style="text-align:center; color:var(--t3); font-size:14px; margin-top:24px;">
+      Don't have an account? <a class="link" href="#">Register</a>
+    </p>
   </div>
 </section>
 
+<!-- ACCESSIBILITY -->
 <section id="a11y">
-  <div class="container">
+  <div class="shell">
     <header class="section-head">
       <h2>Accessibility</h2>
-      <p>Every token combo we ship passes WCAG AA for its intended use.</p>
+      <p>Every token combo passes WCAG AA for its intended use.</p>
     </header>
-
     <table class="a11y-table">
       <thead>
         <tr><th>Combo</th><th>Ratio</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr><td>Text 1 on Background</td><td>13.05:1</td><td><span class="pass">AAA</span></td></tr>
-        <tr><td>Text 2 on Background</td><td>5.55:1</td><td><span class="pass">AA</span></td></tr>
-        <tr><td>Text 3 on Background</td><td>4.99:1</td><td><span class="pass">AA</span></td></tr>
-        <tr><td>Text 4 on Background</td><td>3.07:1</td><td><span class="pass">AA Large</span></td></tr>
-        <tr><td>Indigo on Background</td><td>4.67:1</td><td><span class="pass">AA</span></td></tr>
-        <tr><td>White on Indigo CTA</td><td>4.83:1</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>Text 1 on Background</td><td>16.9:1</td><td><span class="pass">AAA</span></td></tr>
+        <tr><td>Text 2 on Background</td><td>9.1:1</td><td><span class="pass">AAA</span></td></tr>
+        <tr><td>Text 3 on Background</td><td>5.0:1</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>White on Indigo CTA</td><td>4.8:1</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>Indigo link on Background</td><td>5.8:1</td><td><span class="pass">AA</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -565,9 +577,12 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
 </main>
 
 <footer>
-  <div class="container">
-    <span>Fastn Brand System</span>
-    <span><a class="accent" href="https://fastn.ai" target="_blank" rel="noopener">fastn.ai →</a></span>
+  <div class="shell">
+    <div>Fastn Brand System</div>
+    <div class="links">
+      <a class="muted-link" href="https://fastn.ai" target="_blank" rel="noopener">fastn.ai</a>
+      <a class="muted-link" href="https://github.com/fastnai/fastn-brand" target="_blank" rel="noopener">GitHub</a>
+    </div>
   </div>
 </footer>
 
@@ -584,7 +599,7 @@ footer .container { display: flex; justify-content: space-between; flex-wrap: wr
     });
   })();
 
-  // Copy hex on swatch row click
+  // Copy hex on row click
   for (const row of document.querySelectorAll('.color-row')) {
     row.addEventListener('click', async () => {
       const hex = row.dataset.copy;
