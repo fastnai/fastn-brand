@@ -7,6 +7,16 @@ Token, font, and visual changes that affect consumers are marked **breaking** un
 
 ## [Unreleased]
 
+### Changed
+- Tokenize hardcoded focus-ring color (3 occurrences) as `--focus-ring`.
+- Tokenize pass-state green as `--pass`; theme-aware (`#4ADE80` dark, `#15803D` light).
+- Tokenize error focus-ring shadow as `--focus-ring-error`.
+- `og.html` now uses self-hosted Inter to match the main page.
+- `index.html` is now well-formed (has `<html>`, `<head>`, `<body>` and an accessible fallback link).
+
+### Removed
+- Dead CSS class `.logo-on-accent` (the on-accent logo tile was removed earlier).
+
 ## [3.0.0] - 2026-05-20
 
 ### Changed (breaking)

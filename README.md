@@ -16,7 +16,11 @@ Color is punctuation, not prose. One accent (the indigo gradient) carries every 
 | `tokens.css` | CSS custom properties. Drop into any project. |
 | `tokens.json` | Source-of-truth tokens. Style Dictionary / Figma / Tailwind importable. |
 | `SKILL.md` | Project file for Claude. Adds brand context to AI-assisted work. |
+| `CHANGELOG.md` | Versioned change log (Keep a Changelog format). |
+| `CONTRIBUTING.md` | What we accept, the PR checklist, versioning policy. |
 | `logos/` | Logo files (wordmark PNG, icon PNG, social variants). |
+| `fonts/` | Self-hosted Inter (latin subset, woff2). |
+| `og.html`, `og.png` | OpenGraph share card source and rendered image. |
 
 ## Quick start
 

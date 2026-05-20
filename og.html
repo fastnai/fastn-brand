@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Fastn Brand System &middot; OG image</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+<title>Fastn Brand System &middot; OG image source</title>
 <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('fonts/inter-latin.woff2') format('woff2');
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { background: #18181B; }
   .card {
@@ -22,20 +26,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
     overflow: hidden;
   }
   .icon {
     width: 88px;
     height: 88px;
     border-radius: 18px;
-    background: linear-gradient(135deg, #6C5CE7, #8E76F2);
     box-shadow: 0 0 80px rgba(124, 92, 231, 0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
   }
-  .icon img { height: 56px; width: auto; display: block; }
+  .icon img { width: 100%; height: 100%; display: block; object-fit: cover; }
   h1 {
     font-weight: 700;
     font-size: 92px;
@@ -81,10 +81,11 @@
 </style>
 </head>
 <body>
-  <!-- Source for og.png. Render to PNG by screenshotting this file at 1200x630. -->
+  <!-- Source for og.png. Render at 1200x630 (deviceScaleFactor: 2 for retina).
+       See CONTRIBUTING.md for the regeneration command. -->
   <div class="card">
     <div class="icon">
-      <img src="logos/fastn-icon-rounded.jpg" alt="" style="border-radius: 10px;">
+      <img src="logos/fastn-icon-rounded.jpg" alt="">
     </div>
 
     <div>

@@ -1,6 +1,6 @@
 # Fastn Brand Skill
 
-You are working on a project for Fastn (fastn.ai), a platform for trustworthy agents and high-value workflows. Apply these brand guidelines to every design, copy, and code decision.
+You are working on a project for Fastn (fastn.ai). Apply these brand guidelines to every design, copy, and code decision.
 
 ## Philosophy
 
@@ -12,24 +12,26 @@ If a design feels visually busy, the fix is almost always to remove color, not a
 
 - Name: Fastn. Always lowercase "fastn" in logos and product UI. Title case "Fastn" in prose.
 - Tone: Direct, confident, without ceremony. Engineer briefing a teammate.
-- We sell trust. Every visual choice should feel calm, deliberate, and high-signal.
+- We sell trust. Every visual choice should feel calm, deliberate, high-signal.
 
 ## Color
 
-### Accent (the only chromatic color)
+### Accent (the only chromatic color in the system)
 
 | Token | Value | Use |
 |---|---|---|
-| `--accent-1` | `#6C5CE7` | Gradient start, focus rings |
-| `--accent-2` | `#A78BFA` | Gradient end, inline link color |
-| Gradient | `linear-gradient(90deg, #6C5CE7, #A78BFA)` | Primary CTA only |
-| Glow | `0 0 28px rgba(124, 92, 231, 0.45)` | Outer glow on primary CTA |
+| `--accent-1` | `#6C5CE7` | Gradient start. Inline link color in light theme. |
+| `--accent-2` | `#8E76F2` | Gradient end. Inline link color in dark theme. |
+| `--accent-glow` | `rgba(124, 92, 231, 0.45)` | 28px outer glow on the primary CTA. |
+| `--accent-link` | theme-specific | `#A78BFA` in dark, `#6C5CE7` in light. |
+
+The CTA gradient is `linear-gradient(90deg, #6C5CE7, #8E76F2)`. It appears on the primary CTA only. Paired with the 28px outer glow.
 
 The accent appears on three things, nothing else:
 
-1. The primary CTA button (gradient fill plus glow).
-2. Inline links inside body text (solid `--accent-2`).
-3. Focus rings on interactive elements.
+1. The primary CTA button (gradient fill + glow).
+2. Inline links inside body text (solid `--accent-link`).
+3. Focus rings on interactive elements (`box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.40)`).
 
 It must not appear on: section labels, badges, eyebrow tags, hover states for non-action elements, decorative dividers, icons, or background tints.
 
@@ -41,11 +43,11 @@ It must not appear on: section labels, badges, eyebrow tags, hover states for no
 | Surface 1 (cards, inputs) | `#1F1F23` |
 | Surface 2 (hover) | `#26262B` |
 | Border | `#2A2A30` |
-| Border high | `#3A3A42` |
+| Border high (hover, focus) | `#3A3A42` |
 | Text 1 (headings) | `#FFFFFF` |
 | Text 2 (body) | `#BDBDC4` |
 | Text 3 (supporting) | `#8A8A92` |
-| Text 4 (disabled, non-text) | `#5C5C64` |
+| Text 4 (disabled, non-text only) | `#5C5C64` |
 
 ### Light theme
 
@@ -59,9 +61,9 @@ It must not appear on: section labels, badges, eyebrow tags, hover states for no
 | Text 1 | `#18181B` |
 | Text 2 | `#44444A` |
 | Text 3 | `#6E6E76` |
-| Text 4 | `#A4A4AC` |
+| Text 4 (non-text only) | `#A4A4AC` |
 
-### Semantic (sparingly)
+### Semantic (state indicators only)
 
 | Token | Hex | Use |
 |---|---|---|
@@ -71,7 +73,7 @@ It must not appear on: section labels, badges, eyebrow tags, hover states for no
 
 ## Typography
 
-Inter, throughout. No secondary or monospace typeface in brand surfaces. Inter weights 400, 500, 600, 700.
+Inter, throughout. Weights 400, 500, 600, 700. No secondary or monospace typeface in brand surfaces.
 
 | Role | Size | Weight | Tracking |
 |---|---|---|---|
@@ -84,14 +86,7 @@ Inter, throughout. No secondary or monospace typeface in brand surfaces. Inter w
 
 For technical documentation, monospace is allowed inside code blocks only. Use the platform default (`ui-monospace`, no custom face).
 
-## Logo
-
-- Use the wordmark for marketing, web, and documentation.
-- Use the icon mark (`fastn-icon-rounded.jpg`) for compact placements: avatars, favicons, app icons, sign-in cards.
-- White wordmark on dark backgrounds, black wordmark on light. Use `filter: invert(1)` on the PNG, or use a colored variant.
-- The icon-rounded asset is self-contained (dark square plus white icon). Use as-is on any background.
-- Never recolor, stretch, rotate, or add effects to the logo.
-- Minimum clear space equal to the height of the "f" in the wordmark.
+The primary CTA uses 19px / 700 (qualifies as WCAG large text so the gradient endpoint passes AA-large contrast for white-on-color).
 
 ## Components
 
@@ -103,17 +98,28 @@ For technical documentation, monospace is allowed inside code blocks only. Use t
 
 ```css
 .btn-primary {
-  background: linear-gradient(90deg, #6C5CE7, #A78BFA);
+  background: linear-gradient(90deg, #6C5CE7, #8E76F2);
   color: #FFFFFF;
   box-shadow: 0 0 28px rgba(124, 92, 231, 0.45);
   padding: 16px 20px;
   border-radius: 8px;
-  font-weight: 600;
+  font-size: 19px;
+  font-weight: 700;
 }
-.btn-primary:hover { filter: brightness(1.05); box-shadow: 0 0 40px rgba(124, 92, 231, 0.45); }
+.btn-primary:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 0 40px rgba(124, 92, 231, 0.45);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
 ```
 
-### Secondary buttons (passkey, Google, Microsoft)
+### Secondary buttons
+
+For passkey, Google, Microsoft, "View on GitHub" style actions.
 
 ```css
 .btn-secondary {
@@ -122,9 +128,22 @@ For technical documentation, monospace is allowed inside code blocks only. Use t
   border: 1px solid var(--border);
   padding: 16px 20px;
   border-radius: 8px;
+  font-size: 17px;
   font-weight: 600;
 }
+.btn-secondary:hover {
+  background: var(--s2);
+  border-color: var(--bd-hi);
+}
 ```
+
+### Loading button
+
+```html
+<button class="btn btn-primary" data-loading="true">Sending</button>
+```
+
+Hide the text (`color: transparent`) and draw an animated spinner via `::after`. Respect `prefers-reduced-motion`.
 
 ### Inputs
 
@@ -136,23 +155,30 @@ For technical documentation, monospace is allowed inside code blocks only. Use t
   padding: 14px 16px;
   color: var(--t1);
 }
+.input::placeholder { color: var(--placeholder); }  /* T3, AA on input fill */
 .input:focus {
   border-color: var(--accent-1);
   box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.20);
   outline: none;
 }
+.input[aria-invalid="true"] { border-color: var(--error); }
+.input:disabled { opacity: 0.5; cursor: not-allowed; }
 ```
+
+Helper text below the input uses Text 3 (`.field-hint`). Error text uses `--error` and `font-weight: 500` (`.field-error`).
 
 ### Inline links
 
 ```css
 a {
-  color: var(--accent-2);
+  color: var(--accent-link);
   text-decoration: none;
   font-weight: 600;
 }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
 ```
+
+`--accent-link` is `#A78BFA` in dark (AA 6.51) and `#6C5CE7` in light (AA 4.86). Do not use `#A78BFA` on a white background; contrast is only 2.72.
 
 ## Voice and tone
 
@@ -183,6 +209,15 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 - Active voice, present tense.
 - Do not use em dashes. Use periods, commas, or parentheses instead.
 
+## Logo
+
+- Use the wordmark for marketing, web, and documentation. Files: `logos/fastn-logo-740px.png`, `logos/fastn-logo-400px.png`.
+- Use the icon mark for compact placements (avatars, favicons, app icons, sign-in cards). File: `logos/fastn-icon-rounded.jpg`.
+- White wordmark on dark backgrounds, black wordmark on light. Apply `filter: invert(1)` to the PNG when on dark surfaces.
+- The icon-rounded asset is self-contained (dark square + white icon). Use as-is on any background.
+- Never recolor, stretch, rotate, or add effects to the logo.
+- Minimum clear space equal to the height of the "f" in the wordmark.
+
 ## Spacing and layout
 
 - Base unit: 4px grid.
@@ -190,13 +225,22 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 - Use generous whitespace. Let content breathe.
 - Narrow centered columns (around 560px) for read-heavy surfaces. Wider only when content demands it.
 
+## Accessibility checklist (every shipped surface)
+
+- WCAG 2.1 AA contrast for every text combination. Verify with the swatches in `fastn-brand-system.html`.
+- Visible focus ring on every interactive element (`box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.40)`).
+- Buttons and links keyboard-accessible. No `<div onclick>`.
+- Touch targets >= 44 x 44 px.
+- Respect `prefers-color-scheme`, `prefers-reduced-motion`, and `forced-colors`.
+
 ## Don't list
 
 - A second accent color.
 - A second typeface.
-- Decorative gradients on text or backgrounds.
+- Decorative gradients on text or backgrounds (gradient is reserved for the primary CTA).
 - Em dashes in copy.
 - Title Case headings.
-- Drop shadows on text or cards (the only shadow allowed is the CTA glow).
+- Drop shadows on text or cards (the only allowed shadow is the CTA glow).
 - Border colors that aren't from the surface scale.
-- Hover states that change hue.
+- Hover states that change hue (use brightness or opacity).
+- `outline: none` without a replacement focus style.
