@@ -1,85 +1,128 @@
-# Fastn Brand System — v1.0
+# Fastn Brand System
 
-The official Fastn brand guidelines. Everything you need to represent Fastn correctly across any surface.
+The official guidelines, design tokens, and logo assets for the Fastn brand. Color, type, logo, voice, and components in one place.
 
-## Contents
+Live page: https://fastnai.github.io/fastn-brand/
 
-| File | Description |
+## Philosophy
+
+Color is punctuation, not prose. One accent (the indigo gradient) carries every primary action. Everything else is neutral grayscale. Hierarchy comes from weight and spacing, never from a second color.
+
+## What's in the repo
+
+| File | Purpose |
 |---|---|
-| [`logos/`](./logos) | Official Fastn logo files (SVG, PNG, JPG) |
-| [`fastn-brand-system.html`](./fastn-brand-system.html) | Interactive brand guidelines — open in any browser |
-| [`tokens.json`](./tokens.json) | Design tokens for Figma, Style Dictionary, Tailwind |
-| [`tokens.css`](./tokens.css) | CSS custom properties — drop into any project |
-| [`SKILL.md`](./SKILL.md) | Claude AI skill — adds brand context to any AI-assisted work |
+| `fastn-brand-system.html` | Interactive brand guidelines. Open in any browser. |
+| `tokens.css` | CSS custom properties. Drop into any project. |
+| `tokens.json` | Source-of-truth tokens. Style Dictionary / Figma / Tailwind importable. |
+| `SKILL.md` | Project file for Claude. Adds brand context to AI-assisted work. |
+| `logos/` | Logo files (wordmark PNG, icon PNG, social variants). |
 
-## Logos
+## Quick start
 
-| File | Description |
-|---|---|
-| [`fastn-logo.svg`](./logos/fastn-logo.svg) | Full logo with wordmark (SVG, scalable) |
-| [`fastn-logo-740px.png`](./logos/fastn-logo-740px.png) | Full logo with wordmark (PNG, 740px) |
-| [`fastn-logo-400px.png`](./logos/fastn-logo-400px.png) | Full logo with wordmark (PNG, 400px) |
-| [`fastn-icon-rounded.jpg`](./logos/fastn-icon-rounded.jpg) | Icon mark only, rounded square background |
-| [`fastn-icon-square.jpg`](./logos/fastn-icon-square.jpg) | Icon mark only, square background |
-| [`fastn-icon-linkedin.jpg`](./logos/fastn-icon-linkedin.jpg) | Icon mark sized for LinkedIn |
+Open the page locally:
 
-## Quick Start
+```bash
+git clone https://github.com/fastnai/fastn-brand.git
+cd fastn-brand
+open fastn-brand-system.html
+```
 
-Open `fastn-brand-system.html` in a browser — no build step needed.
+Use the tokens in your project:
 
-Use tokens in your project:
+```html
+<link rel="stylesheet" href="tokens.css">
+```
 
 ```css
-.button {
-  background: var(--brand);       /* #6C5CE7 */
-  color: #fff;
-  border-radius: var(--radius-3); /* 8px */
+.button-primary {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: var(--on-accent);
+  box-shadow: 0 0 28px var(--accent-glow);
+  border-radius: var(--r-2);
 }
 ```
 
-## Brand at a Glance
+## At a glance
 
-### Colors
+### Accent
 
 | Token | Value | Use |
 |---|---|---|
-| `--brand` | `#6C5CE7` | Primary — CTAs, links, focus rings |
-| `--brand-hover` | `#5A4CD6` | Hover/pressed states |
-| `--brand-light` | `#8F85E8` | Tags, labels, eyebrows |
-| Gradient | `#6C5CE7 to #A78BFA` | Hero art, avatars — sparingly |
-| `--success` | `#10B981` | Positive states |
-| `--warning` | `#F59E0B` | Caution states |
-| `--error` | `#EF4444` | Error states |
+| `--accent-1` | `#6C5CE7` | Gradient start, focus rings |
+| `--accent-2` | `#A78BFA` | Gradient end, inline links |
+| `--accent-glow` | `rgba(124, 92, 231, 0.45)` | 28px outer glow on primary CTA |
+
+The gradient `linear-gradient(90deg, #6C5CE7, #A78BFA)` is reserved for the primary CTA. Inline links use `--accent-2` (solid). Never apply the gradient to text, large surfaces, or decorative elements.
 
 ### Typography
 
-- **Headings**: Geist — weight 400-800
-- **Body**: Inter — weight 400-600, for body text and long-form content
-- **Mono**: Geist Mono — for all code and technical content
-- **Display**: 96px, Geist weight 800, tracking -0.04em
-- **Body text**: 16px, Inter weight 400, line-height 1.7
+Inter, weights 400 / 500 / 600 / 700. One typeface. Hierarchy from size and weight.
 
-### Dual Theme
+| Role | Size | Weight | Tracking |
+|---|---|---|---|
+| Display | 44 | 700 | -0.03em |
+| H1 | 32 | 700 | -0.025em |
+| H2 | 24 | 700 | -0.02em |
+| H3 | 18 | 600 | -0.005em |
+| Body | 16 | 400 | normal |
+| Small | 14 | 400 | normal |
 
-| | Dark (marketing, docs) | Light (app, dashboard) |
+### Themes
+
+Two themes, same restraint. The accent is identical in both. Surfaces flip.
+
+| | Dark | Light |
 |---|---|---|
-| Background | `#101014` | `#FFFFFF` |
-| Card | `#18181E` | `#F5F5FA` |
-| Border | `#2A2A36` | `#E0E0EC` |
-| Body text | `#A0A0B8` | `#3A3A55` |
+| Background | `#18181B` | `#FFFFFF` |
+| Surface 1 | `#1F1F23` | `#F4F4F6` |
+| Border | `#2A2A30` | `#E4E4E8` |
+| Heading | `#FFFFFF` | `#18181B` |
+| Body | `#BDBDC4` | `#44444A` |
+| Supporting | `#8A8A92` | `#6E6E76` |
 
-The brand primary `#6C5CE7` is **identical in both themes** — the visual thread connecting every surface.
+## Using with Claude
 
-## Using with AI (Claude)
+Drop `SKILL.md` into a Claude project (or paste it as a system message). Every conversation in that project will follow Fastn brand guidelines by default.
 
-Drop `SKILL.md` into a Claude Project as a project file. Every conversation will automatically apply Fastn brand.
+## Logos
 
-## Version History
+| File | Use |
+|---|---|
+| `logos/fastn-logo-740px.png` | Wordmark, large (2307 x 1611) |
+| `logos/fastn-logo-400px.png` | Wordmark, web-ready (400 x 248) |
+| `logos/fastn-icon-rounded.jpg` | Icon mark, rounded square (424 x 424) |
+| `logos/fastn-icon-square.jpg` | Icon mark, square |
+| `logos/fastn-icon-linkedin.jpg` | LinkedIn profile sized |
 
-| Version | Date | Notes |
-|---|---|---|
-| 1.0 | Feb 2025 | Initial release — unified dark/light system, Electric Indigo primary |
+Rules:
 
----
+- Use the wordmark for marketing surfaces. Use the icon for compact placements (avatars, favicons, sign-in screens).
+- White wordmark on dark backgrounds, black wordmark on light backgrounds. Apply `filter: invert(1)` to the PNG, or use a colored variant.
+- The icon-rounded asset is self-contained (dark square + white icon). Use as-is on any background.
+- Never stretch, rotate, recolor, or add effects to the logo.
+- Minimum clear space equal to the height of the "f" in the wordmark.
 
-**fastn.ai**
+## Accessibility
+
+Every shipped token combo passes WCAG 2.1 AA for its intended use:
+
+| Pair | Ratio |
+|---|---|
+| Text 1 on Background | 16.9:1 (AAA) |
+| Text 2 on Background | 9.1:1 (AAA) |
+| Text 3 on Background | 5.0:1 (AA) |
+| White on Indigo CTA | 4.8:1 (AA) |
+| Indigo link on Background | 5.8:1 (AA) |
+
+Focus rings use `box-shadow: 0 0 0 3px rgba(108,92,231,0.40)`. Reduced-motion preferences are honored. The page is keyboard-navigable.
+
+## License
+
+MIT. See [LICENSE](./LICENSE).
+
+The Fastn name, wordmark, and icon are trademarks of Fastn. The code and tokens in this repository are MIT-licensed and free to reuse; the logo assets remain Fastn's trademarks and should only be used to refer to or integrate with Fastn.
+
+## Contributing
+
+This is the source of truth for the Fastn brand. Contributions that strengthen the system (token additions, accessibility improvements, framework adapters) are welcome. Contributions that introduce a second accent color, a second typeface, decorative gradients, or marketing fluff will not be accepted.

@@ -1,63 +1,63 @@
 /**
  * Fastn Design Tokens
- * Warm dark palette with Electric Indigo accent.
- * Matches the live app (app.live.gcp.fastn.ai).
+ * One accent, neutral grayscale, Inter throughout.
  */
 
 :root {
-  /* Accent — Electric Indigo. The ONLY chromatic color in the system.
-     Use on: primary CTA, inline links, focus rings. Nowhere else. */
-  --accent:    #6C5CE7;
-  --accent-hi: #7B6CEF;
-  --accent-lo: #5A4CD6;
+  /* Accent. Use only on the primary CTA, inline links, and focus rings.
+     Nothing else gets chromatic color. */
+  --accent-1:    #6C5CE7;
+  --accent-2:    #A78BFA;
+  --accent-glow: rgba(124, 92, 231, 0.45);
+  --accent-link: #A78BFA;
 
-  /* Semantic — used sparingly, only on state indicators (success/error pills, etc.) */
+  /* Semantic. Reserved for state indicators (success/error pills, etc.) */
   --success: #10B981;
   --warning: #F59E0B;
   --error:   #EF4444;
 
-  /* Typography — Inter only. Hierarchy comes from size + weight, not from a second face. */
+  /* Typography. Inter only. Hierarchy from size and weight, not from a second face. */
   --font: 'Inter', system-ui, -apple-system, sans-serif;
 
-  /* Radii */
-  --r-2: 6px;   /* inputs */
-  --r-3: 8px;   /* buttons */
-  --r-4: 12px;  /* cards */
+  /* Radius */
+  --r-2: 8px;   /* inputs, buttons */
+  --r-3: 10px;
+  --r-4: 14px;  /* cards */
   --r-full: 9999px;
 
   /* Motion */
-  --dur:  160ms;
+  --dur:  180ms;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark theme (default) — warm, brown undertone. Never pure black. */
+/* Dark theme (default) */
 :root, [data-theme="dark"] {
-  --bg:     #1A1918;
-  --s1:     #222120;  /* cards, row hover */
-  --s2:     #2B2A27;  /* raised, selected, also default border */
-  --border: #2B2A27;
-  --bd-hi:  #3E3D38;  /* hover, focus borders */
+  --bg:     #18181B;
+  --s1:     #1F1F23;  /* cards, inputs, secondary buttons */
+  --s2:     #26262B;  /* hover */
+  --border: #2A2A30;
+  --bd-hi:  #3A3A42;  /* hover, focus */
 
-  --t1: #E3E1DA;  /* headings, primary text */
-  --t2: #918F86;  /* body */
-  --t3: #8A8780;  /* supporting */
-  --t4: #605E56;  /* captions ≥18px or non-text only */
+  --t1: #FFFFFF;
+  --t2: #BDBDC4;
+  --t3: #8A8A92;
+  --t4: #5C5C64;
 
   --on-accent: #FFFFFF;
 }
 
-/* Light theme — same restraint, inverted surfaces. */
+/* Light theme */
 [data-theme="light"] {
   --bg:     #FFFFFF;
-  --s1:     #FAFAF8;
-  --s2:     #F0EFEB;
-  --border: #E8E5DE;
-  --bd-hi:  #D4D0C8;
+  --s1:     #F4F4F6;
+  --s2:     #EAEAEE;
+  --border: #E4E4E8;
+  --bd-hi:  #CFCFD5;
 
-  --t1: #1A1816;
-  --t2: #4A4842;
-  --t3: #6F6B66;
-  --t4: #A8A49D;
+  --t1: #18181B;
+  --t2: #44444A;
+  --t3: #6E6E76;
+  --t4: #A4A4AC;
 
   --on-accent: #FFFFFF;
 }
