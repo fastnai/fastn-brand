@@ -1,90 +1,67 @@
 /**
- * Fastn Design Tokens — v2.0
- * Aligned with fastn.ai
- * Usage: import this file once at the root of your app.
+ * Fastn Design Tokens
+ * Warm dark palette with Electric Indigo accent.
+ * Matches the live app (app.live.gcp.fastn.ai).
  */
 
 :root {
-  /* Brand accent — Fastn Blue */
-  --accent:        #4FB2FF;
-  --accent-hi:     #7AC4FF;
-  --accent-lo:     #2F8FD6;
-  --accent-on:     #06121C;
-  --accent-tint:   rgba(79, 178, 255, 0.10);
-  --accent-faint:  rgba(79, 178, 255, 0.04);
+  /* Accent — Electric Indigo. The ONLY chromatic color in the system.
+     Use on: primary CTA, inline links, focus rings. Nowhere else. */
+  --accent:    #6C5CE7;
+  --accent-hi: #7B6CEF;
+  --accent-lo: #5A4CD6;
 
-  /* Semantic */
-  --success:    #10B981;
-  --success-bg: rgba(16, 185, 129, 0.10);
-  --warning:    #F59E0B;
-  --warning-bg: rgba(245, 158, 11, 0.10);
-  --error:      #EF4444;
-  --error-bg:   rgba(239, 68, 68, 0.10);
-  --info:       #4FB2FF;
-  --info-bg:    rgba(79, 178, 255, 0.10);
+  /* Semantic — used sparingly, only on state indicators (success/error pills, etc.) */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error:   #EF4444;
 
-  /* Spacing */
-  --sp-1:  4px;  --sp-2:  8px;  --sp-3:  12px; --sp-4:  16px;
-  --sp-6:  24px; --sp-8:  32px; --sp-12: 48px;
-  --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+  /* Typography — Inter only. Hierarchy comes from size + weight, not from a second face. */
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
 
-  /* Radius */
-  --radius-1:    4px;   /* chips, tags */
-  --radius-2:    6px;   /* inputs */
-  --radius-3:    8px;   /* buttons */
-  --radius-4:    12px;  /* cards */
-  --radius-5:    16px;  /* panels */
-  --radius-6:    24px;  /* modals */
-  --radius-full: 9999px;
+  /* Radii */
+  --r-2: 6px;   /* inputs */
+  --r-3: 8px;   /* buttons */
+  --r-4: 12px;  /* cards */
+  --r-full: 9999px;
 
   /* Motion */
-  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
-  --dur-fast:    100ms;
-  --dur:         180ms;
-  --dur-medium:  240ms;
-  --dur-slow:    320ms;
-
-  /* Typography */
-  --font-display: 'Geist', system-ui, -apple-system, sans-serif;
-  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono:    'Geist Mono', 'Fira Code', ui-monospace, monospace;
+  --dur:  160ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark theme (default) */
+/* Dark theme (default) — warm, brown undertone. Never pure black. */
 :root, [data-theme="dark"] {
-  --bg:        #0E0E10;
-  --s1:        #111113;
-  --s2:        #1A1A1D;
-  --s3:        #222226;
-  --border:    #2A2A2E;
-  --border-hi: #3E3E44;
+  --bg:     #1A1918;
+  --s1:     #222120;  /* cards, row hover */
+  --s2:     #2B2A27;  /* raised, selected, also default border */
+  --border: #2B2A27;
+  --bd-hi:  #3E3D38;  /* hover, focus borders */
 
-  --t1: #FFFFFF;
-  --t2: #D6D6D8;
-  --t3: #9A9AA2;
-  --t4: #6E6E76;
+  --t1: #E3E1DA;  /* headings, primary text */
+  --t2: #918F86;  /* body */
+  --t3: #8A8780;  /* supporting */
+  --t4: #605E56;  /* captions ≥18px or non-text only */
+
+  --on-accent: #FFFFFF;
 }
 
-/* Light theme */
+/* Light theme — same restraint, inverted surfaces. */
 [data-theme="light"] {
-  --bg:        #FFFFFF;
-  --s1:        #F7F7F8;
-  --s2:        #EEEEF0;
-  --s3:        #E4E4E7;
-  --border:    #E4E4E7;
-  --border-hi: #C9C9CF;
+  --bg:     #FFFFFF;
+  --s1:     #FAFAF8;
+  --s2:     #F0EFEB;
+  --border: #E8E5DE;
+  --bd-hi:  #D4D0C8;
 
-  --t1: #0E0E10;
-  --t2: #2A2A2E;
-  --t3: #5A5A62;
-  --t4: #8A8A92;
+  --t1: #1A1816;
+  --t2: #4A4842;
+  --t3: #6F6B66;
+  --t4: #A8A49D;
+
+  --on-accent: #FFFFFF;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
 }

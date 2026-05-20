@@ -3,153 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="The Fastn brand system — colors, typography, logo, voice, and components. The complete guide to representing Fastn.">
-<title>Fastn Brand System v2.0</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%234FB2FF'/%3E%3C/svg%3E">
+<meta name="description" content="The Fastn brand system — color, type, logo, voice, components. Restrained by design.">
+<title>Fastn Brand System</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%236C5CE7'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --accent:    #4FB2FF;
-  --accent-hi: #7AC4FF;
-  --accent-lo: #2F8FD6;
-  --accent-on: #06121C;
-  --accent-tint: rgba(79,178,255,0.10);
-  --accent-faint: rgba(79,178,255,0.04);
+  --accent:     #6C5CE7;
+  --accent-hi:  #7B6CEF;
+  --accent-lo:  #5A4CD6;
 
   --success: #10B981;
   --warning: #F59E0B;
   --error:   #EF4444;
-  --info:    #4FB2FF;
 
-  --font-display: 'Geist', system-ui, -apple-system, sans-serif;
-  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono:    'Geist Mono', 'Fira Code', ui-monospace, monospace;
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
 
-  --radius-1: 4px;
-  --radius-2: 6px;
-  --radius-3: 8px;
-  --radius-4: 12px;
-  --radius-5: 16px;
-  --radius-full: 9999px;
+  --r-2: 6px;
+  --r-3: 8px;
+  --r-4: 12px;
+  --r-full: 9999px;
 
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.20);
-  --shadow-md: 0 8px 24px rgba(0,0,0,0.30);
-  --shadow-lg: 0 16px 48px rgba(0,0,0,0.40);
-
-  --dur-fast: 100ms;
-  --dur:      180ms;
-  --dur-slow: 320ms;
-  --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+  --dur: 160ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark theme (default) */
-:root, [data-theme="dark"] {
-  --bg:        #0E0E10;
-  --s1:        #111113;
-  --s2:        #1A1A1D;
-  --s3:        #222226;
-  --border:    #2A2A2E;
-  --border-hi: #3E3E44;
+[data-theme="dark"] {
+  --bg:     #1A1918;
+  --s1:     #222120;
+  --s2:     #2B2A27;
+  --border: #2B2A27;
+  --bd-hi:  #3E3D38;
 
-  --t1: #FFFFFF;
-  --t2: #D6D6D8;
-  --t3: #9A9AA2;
-  --t4: #6E6E76;
+  --t1: #E3E1DA;
+  --t2: #918F86;
+  --t3: #8A8780;
+  --t4: #605E56;
 
-  --nav-bg: rgba(14, 14, 16, 0.72);
+  --on-accent: #FFFFFF;
   --logo-filter: invert(1);
 }
 
-/* Light theme */
 [data-theme="light"] {
-  --bg:        #FFFFFF;
-  --s1:        #F7F7F8;
-  --s2:        #EEEEF0;
-  --s3:        #E4E4E7;
-  --border:    #E4E4E7;
-  --border-hi: #C9C9CF;
+  --bg:     #FFFFFF;
+  --s1:     #FAFAF8;
+  --s2:     #F0EFEB;
+  --border: #E8E5DE;
+  --bd-hi:  #D4D0C8;
 
-  --t1: #0E0E10;
-  --t2: #2A2A2E;
-  --t3: #5A5A62;
-  --t4: #8A8A92;
+  --t1: #1A1816;
+  --t2: #4A4842;
+  --t3: #6F6B66;
+  --t4: #A8A49D;
 
-  --nav-bg: rgba(255, 255, 255, 0.78);
+  --on-accent: #FFFFFF;
   --logo-filter: none;
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font);
   background: var(--bg);
   color: var(--t2);
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-::selection { background: var(--accent); color: var(--accent-on); }
+::selection { background: var(--accent); color: var(--on-accent); }
 
-/* ── Nav ── */
+a { color: inherit; }
+
+/* ─ Nav ─ Minimal: logo, theme toggle. Nothing competes. */
 .nav {
   position: sticky;
   top: 0;
   z-index: 50;
-  border-bottom: 1px solid var(--border);
-  background: var(--nav-bg);
-  backdrop-filter: saturate(180%) blur(16px);
-  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 .nav-inner {
-  max-width: 1200px;
+  max-width: 880px;
   margin: 0 auto;
-  padding: 0 32px;
-  height: 80px;
+  padding: 20px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 18px;
-  color: var(--t1);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-}
-.nav-logo img { height: 52px; width: auto; display: block; filter: var(--logo-filter); }
-[data-theme="dark"] .nav-logo img { filter: invert(1); }
-
-.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-.nav-links a {
-  color: var(--t3);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 8px 12px;
-  border-radius: var(--radius-3);
-  transition: color var(--dur) var(--ease);
-}
-.nav-links a:hover { color: var(--t1); }
-.nav-cta {
-  margin-left: 8px;
-  background: var(--accent);
-  color: var(--accent-on) !important;
-  padding: 9px 14px !important;
-  font-weight: 600 !important;
-  border-radius: var(--radius-3);
-  transition: background var(--dur) var(--ease) !important;
-}
-.nav-cta:hover { background: var(--accent-hi); color: var(--accent-on) !important; }
+.nav-logo { display: block; }
+.nav-logo img { height: 36px; width: auto; display: block; filter: var(--logo-filter); }
 
 .theme-toggle {
   display: inline-flex;
@@ -157,470 +106,243 @@ body {
   justify-content: center;
   width: 36px;
   height: 36px;
-  margin-left: 8px;
   background: transparent;
   border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  color: var(--t2);
+  border-radius: var(--r-full);
+  color: var(--t3);
   cursor: pointer;
-  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
-.theme-toggle:hover { color: var(--t1); border-color: var(--border-hi); background: var(--s1); }
+.theme-toggle:hover { color: var(--t1); border-color: var(--bd-hi); }
 .theme-toggle svg { width: 16px; height: 16px; }
 .theme-toggle .icon-sun { display: none; }
 [data-theme="light"] .theme-toggle .icon-sun { display: block; }
 [data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
-/* ── Layout ── */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-main > section { padding: 96px 0; }
-main > section + section { border-top: 1px solid var(--border); }
+/* ─ Layout ─ Narrow single column. Like the sign-in page. */
+.container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+main > section { padding: 80px 0; }
 
-/* ── Hero ── */
-.hero { padding: 120px 0 96px; }
-.hero-inner { max-width: 880px; }
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--t3);
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  margin-bottom: 28px;
-}
-.eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-
-.display {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(48px, 7.6vw, 82px);
-  line-height: 1.0;
-  letter-spacing: -0.04em;
+h1, h2, h3, h4 {
+  font-family: var(--font);
   color: var(--t1);
-  margin-bottom: 24px;
-}
-.lede {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(20px, 2vw, 24px);
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-  color: var(--t3);
-  max-width: 640px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
-.hero-actions { display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+h1 { font-size: clamp(40px, 5.5vw, 56px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; }
+h2 { font-size: 32px; margin-bottom: 16px; }
+h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
 
-/* ── Section heading ── */
-.section-head { margin-bottom: 48px; max-width: 760px; }
-.section-tag {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 16px;
-  display: inline-block;
-}
-.section-title {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(36px, 4vw, 58px);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  color: var(--t1);
-  margin-bottom: 16px;
-}
-.section-desc {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 1.5;
-  letter-spacing: -0.005em;
-  color: var(--t3);
-}
+/* ─ Hero ─ Anchored, calm. Title, lede, one CTA. */
+.hero { padding: 96px 0 56px; }
+.hero p { font-size: 18px; color: var(--t3); max-width: 540px; line-height: 1.55; }
+.hero .actions { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
 
-/* ── Buttons ── */
+/* ─ Section header ─ Just a title. No eyebrow, no mono tag. */
+.section-head { margin-bottom: 40px; }
+.section-head p { color: var(--t3); font-size: 17px; max-width: 540px; margin-top: 4px; }
+
+/* ─ Buttons ─ Three roles. Indigo (action), neutral (option), text (tertiary). */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-body);
+  font: inherit;
   font-size: 15px;
-  font-weight: 600;
-  padding: 12px 20px;
-  border-radius: var(--radius-3);
+  font-weight: 500;
+  padding: 11px 18px;
+  border-radius: var(--r-3);
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
-  transition: all var(--dur) var(--ease);
-  white-space: nowrap;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
-.btn-primary { background: var(--accent); color: var(--accent-on); }
-.btn-primary:hover { background: var(--accent-hi); transform: translateY(-1px); }
-.btn-secondary { background: var(--s1); color: var(--t1); border-color: var(--border); }
-.btn-secondary:hover { background: var(--s2); border-color: var(--border-hi); }
-.btn-ghost { background: transparent; color: var(--t2); }
-.btn-ghost:hover { color: var(--t1); background: var(--s1); }
-
-/* ── Color swatches ── */
-.swatch-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 12px;
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
 }
-.swatch {
+.btn-primary:hover { background: var(--accent-hi); }
+.btn-secondary {
   background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-4);
-  overflow: hidden;
-  transition: all var(--dur) var(--ease);
-  cursor: pointer;
+  color: var(--t1);
+  border-color: var(--border);
 }
-.swatch:hover { border-color: var(--border-hi); transform: translateY(-2px); }
-.swatch-color { height: 96px; position: relative; }
-.swatch-color::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+.btn-secondary:hover { background: var(--s2); border-color: var(--bd-hi); }
+.btn-text {
+  background: transparent;
+  color: var(--t2);
+  padding: 11px 0;
+}
+.btn-text:hover { color: var(--t1); }
+
+/* ─ Color rows ─ NAME · HEX · USE, no card chrome. */
+.color-rows {
+  border-top: 1px solid var(--border);
+}
+.color-row {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease);
+}
+.color-row:hover { background: var(--s1); }
+.color-row .chip {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-3);
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
 }
-.swatch-meta { padding: 14px 16px; }
-.swatch-name {
-  font-family: var(--font-display);
-  font-size: 14px;
+.color-row .meta { display: flex; flex-direction: column; gap: 2px; }
+.color-row .name { color: var(--t1); font-weight: 500; font-size: 15px; }
+.color-row .use  { color: var(--t3); font-size: 14px; }
+.color-row .hex  { color: var(--t3); font-size: 14px; font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+.subheading {
+  font-size: 13px;
   font-weight: 600;
-  color: var(--t1);
-  letter-spacing: -0.005em;
-}
-.swatch-hex {
-  font-family: var(--font-mono);
-  font-size: 12px;
   color: var(--t3);
-  margin-top: 4px;
-}
-.swatch-use {
-  font-size: 12px;
-  color: var(--t4);
-  margin-top: 6px;
-  line-height: 1.5;
-}
-
-.swatch-row + .swatch-row { margin-top: 48px; }
-.swatch-row-label {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--t3);
-  margin-bottom: 16px;
+  letter-spacing: 0.06em;
+  margin: 56px 0 12px;
 }
+.subheading:first-of-type { margin-top: 0; }
 
-/* ── Typography section ── */
-.type-stack { display: flex; flex-direction: column; }
+/* ─ Type specimen ─ One column. No table chrome. */
 .type-row {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 32px;
-  padding: 28px 0;
+  padding: 24px 0;
   border-bottom: 1px solid var(--border);
-  align-items: baseline;
 }
 .type-row:last-child { border-bottom: none; }
-.type-meta-name {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+.type-row .label {
+  font-size: 13px;
   color: var(--t3);
+  margin-bottom: 8px;
 }
-.type-meta-detail {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--t4);
-  margin-top: 6px;
-  line-height: 1.6;
-}
-.type-display { font-family: var(--font-display); font-weight: 500; color: var(--t1); font-size: 82px; line-height: 1.0;  letter-spacing: -0.04em; }
-.type-h1      { font-family: var(--font-display); font-weight: 500; color: var(--t1); font-size: 58px; line-height: 1.05; letter-spacing: -0.03em; }
-.type-h2      { font-family: var(--font-display); font-weight: 500; color: var(--t1); font-size: 38px; line-height: 1.1;  letter-spacing: -0.02em; }
-.type-h3      { font-family: var(--font-display); font-weight: 500; color: var(--t1); font-size: 28px; line-height: 1.3;  letter-spacing: -0.01em; }
-.type-h4      { font-family: var(--font-body);    font-weight: 600; color: var(--t1); font-size: 20px; line-height: 1.35; }
-.type-body    { font-family: var(--font-body);    font-weight: 400; color: var(--t2); font-size: 16px; line-height: 1.65; max-width: 560px; }
-.type-small   { font-family: var(--font-body);    font-weight: 400; color: var(--t3); font-size: 14px; line-height: 1.6; }
-.type-mono    { font-family: var(--font-mono);    font-weight: 400; color: var(--accent); font-size: 14px; line-height: 1.6; }
+.type-display { font-size: 56px; font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: var(--t1); }
+.type-h1      { font-size: 42px; font-weight: 700; line-height: 1.1;  letter-spacing: -0.025em; color: var(--t1); }
+.type-h2      { font-size: 32px; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em;  color: var(--t1); }
+.type-h3      { font-size: 24px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em;  color: var(--t1); }
+.type-h4      { font-size: 18px; font-weight: 600; line-height: 1.3; color: var(--t1); }
+.type-body    { font-size: 16px; font-weight: 400; line-height: 1.6; color: var(--t2); max-width: 540px; }
+.type-small   { font-size: 14px; font-weight: 400; line-height: 1.55; color: var(--t3); }
 
-/* ── Font cards ── */
-.font-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-  margin-bottom: 64px;
-}
-.font-card {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-4);
-  padding: 28px;
-}
-.font-card-name {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--t3);
-  margin-bottom: 12px;
-}
-.font-card-sample {
-  font-size: 52px;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
-  color: var(--t1);
-  margin-bottom: 12px;
-}
-.font-card-desc { font-size: 13px; color: var(--t3); line-height: 1.6; }
-
-/* ── Logo ── */
+/* ─ Logo grid ─ */
 .logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
 }
-.logo-card {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-4);
-  overflow: hidden;
-  background: var(--s1);
-}
-.logo-preview {
-  height: 180px;
+.logo-tile {
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px;
-}
-.logo-preview.on-bg { background: var(--bg); }
-.logo-preview.on-card { background: var(--s2); }
-.logo-preview.on-accent { background: var(--accent); }
-.logo-preview.on-light { background: #FFFFFF; }
-.logo-preview img { max-width: 70%; max-height: 100%; object-fit: contain; }
-[data-theme="dark"] .logo-preview.on-bg img,
-[data-theme="dark"] .logo-preview.on-card img { filter: invert(1); }
-.logo-preview.on-accent img { filter: none; }
-.logo-preview.on-light img { filter: none; }
-.logo-card-meta {
-  padding: 14px 16px;
-  border-top: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--t3);
-}
-
-/* ── Voice cards ── */
-.voice-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
-}
-.voice-card {
-  background: var(--s1);
+  border-radius: var(--r-4);
   border: 1px solid var(--border);
-  border-radius: var(--radius-4);
-  padding: 28px;
 }
-.voice-card-tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
-.voice-card-title {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: var(--t1);
-  margin-bottom: 12px;
-}
-.voice-card p { font-size: 14px; color: var(--t3); line-height: 1.65; }
-.voice-list { list-style: none; }
-.voice-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 8px 0;
-  font-size: 14px;
-  color: var(--t2);
-}
-.voice-list li::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--accent);
-  margin-top: 9px;
-  flex-shrink: 0;
-}
+.logo-tile img { max-width: 60%; max-height: 50%; object-fit: contain; }
+.logo-on-bg { background: var(--bg); }
+.logo-on-card { background: var(--s2); }
+.logo-on-accent { background: var(--accent); }
+.logo-on-light { background: #FFFFFF; }
+[data-theme="dark"] .logo-on-bg img,
+[data-theme="dark"] .logo-on-card img { filter: invert(1); }
 
-/* ── Component demos ── */
-.demo-grid {
+/* ─ Voice ─ Plain prose. No cards. Just spaced paragraphs. */
+.voice-row {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 16px;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
 }
-.demo-card {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-4);
-  padding: 32px;
-}
-.demo-card-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--t3);
-  margin-bottom: 20px;
-}
+.voice-row:last-child { border-bottom: none; }
+.voice-row h3 { font-size: 18px; font-weight: 600; }
+.voice-row p { color: var(--t2); font-size: 15px; line-height: 1.6; max-width: 480px; }
+.voice-row ul { list-style: none; }
+.voice-row li { padding: 4px 0; color: var(--t2); font-size: 15px; }
+.voice-row li + li { border-top: 1px dashed var(--border); margin-top: 4px; padding-top: 8px; }
+
+/* ─ Components demo ─ Buttons inline, plain. */
+.demo-stack > * + * { margin-top: 32px; }
 .demo-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.demo-row + .demo-row { margin-top: 16px; }
+.demo-label { font-size: 13px; color: var(--t3); margin-bottom: 12px; }
 
-/* Badges */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border);
-  background: var(--s2);
-  color: var(--t2);
-}
-.badge-accent { background: var(--accent-tint); color: var(--accent-hi); border-color: rgba(79,178,255,0.20); }
-.badge-success { background: rgba(16,185,129,0.10); color: #34D399; border-color: rgba(16,185,129,0.20); }
-.badge-warning { background: rgba(245,158,11,0.10); color: #FBBF24; border-color: rgba(245,158,11,0.20); }
-.badge-error { background: rgba(239,68,68,0.10); color: #F87171; border-color: rgba(239,68,68,0.20); }
-
-/* Inputs */
 .input {
   width: 100%;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius-3);
+  border-radius: var(--r-2);
   padding: 10px 14px;
-  font-family: var(--font-body);
-  font-size: 14px;
+  font-family: var(--font);
+  font-size: 15px;
   color: var(--t1);
   outline: none;
   transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 .input::placeholder { color: var(--t4); }
-.input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,178,255,0.18); }
+.input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,92,231,0.18); }
 
-/* Code block */
-.code {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-4);
-  padding: 24px 28px;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--t2);
-  overflow-x: auto;
+/* ─ Inline accent links ─ The only other place accent shows up. */
+.prose a, a.accent {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
-.code .k { color: #C792EA; }   /* keyword */
-.code .s { color: #C3E88D; }   /* string */
-.code .c { color: var(--t4); } /* comment */
-.code .p { color: var(--accent); } /* property */
-.code .n { color: #F78C6C; }   /* number */
+.prose a:hover, a.accent:hover { color: var(--accent-hi); }
 
-/* ── Token tables ── */
-.tokens {
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-4);
-  overflow: hidden;
-}
-.token-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 16px 24px;
-  border-top: 1px solid var(--border);
-  align-items: center;
-  font-size: 14px;
-}
-.token-row:first-child { border-top: none; }
-.token-row .tk-name { font-family: var(--font-mono); color: var(--t2); }
-.token-row .tk-value { font-family: var(--font-mono); color: var(--accent); }
-.token-row .tk-use { color: var(--t3); font-size: 13px; }
-
-/* ── A11y matrix ── */
+/* ─ A11y table ─ Quiet borders, no fills. */
 .a11y-table {
   width: 100%;
   border-collapse: collapse;
-  background: var(--s1);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-4);
-  overflow: hidden;
   font-size: 14px;
 }
 .a11y-table th, .a11y-table td {
-  padding: 14px 20px;
+  padding: 14px 0;
   text-align: left;
   border-bottom: 1px solid var(--border);
 }
 .a11y-table th {
-  font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--t3);
-  font-weight: 500;
-  background: var(--s2);
+  font-weight: 600;
 }
-.a11y-table tr:last-child td { border-bottom: none; }
-.a11y-table .pass { color: #34D399; font-family: var(--font-mono); font-size: 12px; }
-.a11y-table .fail { color: #F87171; font-family: var(--font-mono); font-size: 12px; }
-.a11y-table .ratio { font-family: var(--font-mono); color: var(--t2); }
+.a11y-table td:nth-child(2), .a11y-table td:nth-child(3) {
+  font-variant-numeric: tabular-nums;
+  color: var(--t2);
+}
+.a11y-table .pass { color: #4ADE80; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; }
 
-/* ── Footer ── */
+/* ─ Footer ─ */
 footer {
-  border-top: 1px solid var(--border);
   padding: 48px 0 64px;
   color: var(--t4);
+  font-size: 14px;
+  border-top: 1px solid var(--border);
 }
-footer .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-footer p { font-size: 13px; }
-footer a { color: var(--t3); text-decoration: underline; text-underline-offset: 3px; }
-footer a:hover { color: var(--t1); }
+footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
 
-/* ── Inline link styling (a11y fix) ── */
-.prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-.prose a:hover { color: var(--accent-hi); }
-
-/* ── Responsive ── */
-@media (max-width: 768px) {
-  .nav-links li:nth-last-child(n+3) { display: none; }
-  .type-row { grid-template-columns: 1fr; gap: 12px; }
-  .token-row { grid-template-columns: 1fr; gap: 4px; padding: 14px 20px; }
-  main > section { padding: 72px 0; }
-  .hero { padding: 64px 0 56px; }
+@media (max-width: 640px) {
+  .voice-row { grid-template-columns: 1fr; gap: 8px; }
+  main > section { padding: 56px 0; }
+  .hero { padding: 56px 0 24px; }
+  h1 { font-size: 40px; }
+  .type-display { font-size: 40px; }
+  .type-h1 { font-size: 32px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
 }
 </style>
 </head>
@@ -628,26 +350,13 @@ footer a:hover { color: var(--t1); }
 
 <header class="nav">
   <div class="nav-inner">
-    <a class="nav-logo" href="#top">
+    <a class="nav-logo" href="#top" aria-label="Fastn — back to top">
       <img src="logos/fastn-logo-400px.png" alt="Fastn">
     </a>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#color">Color</a></li>
-        <li><a href="#type">Typography</a></li>
-        <li><a href="#logo">Logo</a></li>
-        <li><a href="#voice">Voice</a></li>
-        <li><a href="#components">Components</a></li>
-        <li><a href="#a11y">Accessibility</a></li>
-        <li>
-          <button class="theme-toggle" type="button" aria-label="Toggle theme" id="themeToggle">
-            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
-            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-          </button>
-        </li>
-        <li><a class="nav-cta" href="https://fastn.ai" target="_blank" rel="noopener">fastn.ai →</a></li>
-      </ul>
-    </nav>
+    <button class="theme-toggle" type="button" aria-label="Toggle theme" id="themeToggle">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
   </div>
 </header>
 
@@ -655,396 +364,201 @@ footer a:hover { color: var(--t1); }
 
 <section class="hero">
   <div class="container">
-    <div class="hero-inner">
-      <div class="eyebrow"><span class="dot"></span> v2.0 · Brand System</div>
-      <h1 class="display">The Fastn brand, end&#8209;to&#8209;end.</h1>
-      <p class="lede">Colors, typography, logo, voice, and components — the complete system for representing Fastn across product, marketing, and documentation.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#color">Explore the system</a>
-        <a class="btn btn-secondary" href="https://github.com/fastn-ai" target="_blank" rel="noopener">View on GitHub →</a>
-      </div>
+    <h1>The Fastn brand system.</h1>
+    <p>Color, type, logo, voice, components. Restrained by design — one accent, calm neutrals, nothing that doesn't earn its place.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#color">Explore</a>
+      <a class="btn btn-text" href="https://github.com/fastnai/fastn-brand" target="_blank" rel="noopener">View on GitHub →</a>
     </div>
   </div>
 </section>
 
-<!-- ─────────── Color ─────────── -->
 <section id="color">
   <div class="container">
     <header class="section-head">
-      <div class="section-tag">01 · Color</div>
-      <h2 class="section-title">A restrained palette, anchored by Fastn Blue.</h2>
-      <p class="section-desc">Neutral surfaces carry the work. Sky&#8209;blue marks the moments that need attention — primary CTAs, focus rings, accents.</p>
+      <h2>Color</h2>
+      <p>One accent, used only on the primary action and inline emphasis. Everything else is warm grayscale.</p>
     </header>
 
-    <div class="swatch-row">
-      <div class="swatch-row-label">Brand accent</div>
-      <div class="swatch-grid">
-        <div class="swatch" data-copy="#4FB2FF">
-          <div class="swatch-color" style="background:#4FB2FF"></div>
-          <div class="swatch-meta">
-            <div class="swatch-name">Fastn Blue</div>
-            <div class="swatch-hex">#4FB2FF</div>
-            <div class="swatch-use">Primary CTA, links, focus rings, accents</div>
-          </div>
-        </div>
-        <div class="swatch" data-copy="#7AC4FF">
-          <div class="swatch-color" style="background:#7AC4FF"></div>
-          <div class="swatch-meta">
-            <div class="swatch-name">Blue Hover</div>
-            <div class="swatch-hex">#7AC4FF</div>
-            <div class="swatch-use">Hover state on accent surfaces</div>
-          </div>
-        </div>
-        <div class="swatch" data-copy="#2F8FD6">
-          <div class="swatch-color" style="background:#2F8FD6"></div>
-          <div class="swatch-meta">
-            <div class="swatch-name">Blue Pressed</div>
-            <div class="swatch-hex">#2F8FD6</div>
-            <div class="swatch-use">Active/pressed state</div>
-          </div>
-        </div>
-        <div class="swatch" data-copy="rgba(79,178,255,0.10)">
-          <div class="swatch-color" style="background:#4FB2FF; opacity:0.18"></div>
-          <div class="swatch-meta">
-            <div class="swatch-name">Blue Tint</div>
-            <div class="swatch-hex">rgba(79,178,255,.10)</div>
-            <div class="swatch-use">Subtle backgrounds, badges</div>
-          </div>
-        </div>
+    <h3 class="subheading">Accent</h3>
+    <div class="color-rows">
+      <div class="color-row" data-copy="#6C5CE7">
+        <span class="chip" style="background:#6C5CE7"></span>
+        <span class="meta"><span class="name">Electric Indigo</span><span class="use">Primary CTA, inline links, focus rings</span></span>
+        <span class="hex">#6C5CE7</span>
+      </div>
+      <div class="color-row" data-copy="#5A4CD6">
+        <span class="chip" style="background:#5A4CD6"></span>
+        <span class="meta"><span class="name">Indigo Pressed</span><span class="use">Hover/active on accent surfaces</span></span>
+        <span class="hex">#5A4CD6</span>
       </div>
     </div>
 
-    <div class="swatch-row">
-      <div class="swatch-row-label">Surfaces · Dark theme</div>
-      <div class="swatch-grid">
-        <div class="swatch"><div class="swatch-color" style="background:#0E0E10"></div><div class="swatch-meta"><div class="swatch-name">Background</div><div class="swatch-hex">#0E0E10</div><div class="swatch-use">Page background</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#111113"></div><div class="swatch-meta"><div class="swatch-name">Surface 1</div><div class="swatch-hex">#111113</div><div class="swatch-use">Cards, panels</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#1A1A1D"></div><div class="swatch-meta"><div class="swatch-name">Surface 2</div><div class="swatch-hex">#1A1A1D</div><div class="swatch-use">Raised, hover, input bg</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#222226"></div><div class="swatch-meta"><div class="swatch-name">Surface 3</div><div class="swatch-hex">#222226</div><div class="swatch-use">Selected, pressed</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#2A2A2E"></div><div class="swatch-meta"><div class="swatch-name">Border</div><div class="swatch-hex">#2A2A2E</div><div class="swatch-use">Default 1px dividers</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#3E3E44"></div><div class="swatch-meta"><div class="swatch-name">Border High</div><div class="swatch-hex">#3E3E44</div><div class="swatch-use">Hover, focus rings</div></div></div>
-      </div>
+    <h3 class="subheading">Surfaces · Dark</h3>
+    <div class="color-rows">
+      <div class="color-row" data-copy="#1A1918"><span class="chip" style="background:#1A1918"></span><span class="meta"><span class="name">Background</span><span class="use">Page background — warm, never pure black</span></span><span class="hex">#1A1918</span></div>
+      <div class="color-row" data-copy="#222120"><span class="chip" style="background:#222120"></span><span class="meta"><span class="name">Surface 1</span><span class="use">Cards, hover state on rows</span></span><span class="hex">#222120</span></div>
+      <div class="color-row" data-copy="#2B2A27"><span class="chip" style="background:#2B2A27"></span><span class="meta"><span class="name">Surface 2 · Border</span><span class="use">Raised surfaces, selected, dividers</span></span><span class="hex">#2B2A27</span></div>
+      <div class="color-row" data-copy="#3E3D38"><span class="chip" style="background:#3E3D38"></span><span class="meta"><span class="name">Border High</span><span class="use">Hover, focus borders</span></span><span class="hex">#3E3D38</span></div>
     </div>
 
-    <div class="swatch-row">
-      <div class="swatch-row-label">Text · Dark theme</div>
-      <div class="swatch-grid">
-        <div class="swatch"><div class="swatch-color" style="background:#FFFFFF"></div><div class="swatch-meta"><div class="swatch-name">Text 1</div><div class="swatch-hex">#FFFFFF</div><div class="swatch-use">Display, headings, primary</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#D6D6D8"></div><div class="swatch-meta"><div class="swatch-name">Text 2</div><div class="swatch-hex">#D6D6D8</div><div class="swatch-use">Body text</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#9A9AA2"></div><div class="swatch-meta"><div class="swatch-name">Text 3</div><div class="swatch-hex">#9A9AA2</div><div class="swatch-use">Lede, subhead, descriptive</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#6E6E76"></div><div class="swatch-meta"><div class="swatch-name">Text 4</div><div class="swatch-hex">#6E6E76</div><div class="swatch-use">Captions, metadata (≥18px)</div></div></div>
-      </div>
+    <h3 class="subheading">Text · Dark</h3>
+    <div class="color-rows">
+      <div class="color-row" data-copy="#E3E1DA"><span class="chip" style="background:#E3E1DA"></span><span class="meta"><span class="name">Text 1</span><span class="use">Headings, primary content</span></span><span class="hex">#E3E1DA</span></div>
+      <div class="color-row" data-copy="#918F86"><span class="chip" style="background:#918F86"></span><span class="meta"><span class="name">Text 2</span><span class="use">Body, lede</span></span><span class="hex">#918F86</span></div>
+      <div class="color-row" data-copy="#8A8780"><span class="chip" style="background:#8A8780"></span><span class="meta"><span class="name">Text 3</span><span class="use">Subhead, supporting</span></span><span class="hex">#8A8780</span></div>
+      <div class="color-row" data-copy="#605E56"><span class="chip" style="background:#605E56"></span><span class="meta"><span class="name">Text 4</span><span class="use">Captions, metadata (≥18px)</span></span><span class="hex">#605E56</span></div>
     </div>
 
-    <div class="swatch-row">
-      <div class="swatch-row-label">Semantic</div>
-      <div class="swatch-grid">
-        <div class="swatch"><div class="swatch-color" style="background:#10B981"></div><div class="swatch-meta"><div class="swatch-name">Success</div><div class="swatch-hex">#10B981</div><div class="swatch-use">Positive states</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#F59E0B"></div><div class="swatch-meta"><div class="swatch-name">Warning</div><div class="swatch-hex">#F59E0B</div><div class="swatch-use">Caution states</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#EF4444"></div><div class="swatch-meta"><div class="swatch-name">Error</div><div class="swatch-hex">#EF4444</div><div class="swatch-use">Destructive, error states</div></div></div>
-        <div class="swatch"><div class="swatch-color" style="background:#4FB2FF"></div><div class="swatch-meta"><div class="swatch-name">Info</div><div class="swatch-hex">#4FB2FF</div><div class="swatch-use">Informational (= Fastn Blue)</div></div></div>
-      </div>
+    <h3 class="subheading">Semantic</h3>
+    <div class="color-rows">
+      <div class="color-row" data-copy="#10B981"><span class="chip" style="background:#10B981"></span><span class="meta"><span class="name">Success</span><span class="use">Positive states only</span></span><span class="hex">#10B981</span></div>
+      <div class="color-row" data-copy="#F59E0B"><span class="chip" style="background:#F59E0B"></span><span class="meta"><span class="name">Warning</span><span class="use">Caution states only</span></span><span class="hex">#F59E0B</span></div>
+      <div class="color-row" data-copy="#EF4444"><span class="chip" style="background:#EF4444"></span><span class="meta"><span class="name">Error</span><span class="use">Destructive, error states only</span></span><span class="hex">#EF4444</span></div>
     </div>
   </div>
 </section>
 
-<!-- ─────────── Typography ─────────── -->
 <section id="type">
   <div class="container">
     <header class="section-head">
-      <div class="section-tag">02 · Typography</div>
-      <h2 class="section-title">Two typefaces. One job each.</h2>
-      <p class="section-desc">Geist sets the voice. Inter carries the words. Geist Mono speaks in code.</p>
+      <h2>Typography</h2>
+      <p>Inter, throughout. Hierarchy from size and weight — never from a second typeface.</p>
     </header>
 
-    <div class="font-grid">
-      <div class="font-card">
-        <div class="font-card-name">Display · Geist</div>
-        <div class="font-card-sample" style="font-family:var(--font-display); font-weight:500;">Aa Gg</div>
-        <div class="font-card-desc">Headlines and display. Weights 400–600. Letter‑spacing tightens with size: −0.04em at display, −0.01em at H3.</div>
-      </div>
-      <div class="font-card">
-        <div class="font-card-name">Body · Inter</div>
-        <div class="font-card-sample" style="font-family:var(--font-body); font-weight:500;">Aa Gg</div>
-        <div class="font-card-desc">Paragraphs, UI labels, captions. Weights 400/500/600. Line-height 1.6–1.7 for long-form.</div>
-      </div>
-      <div class="font-card">
-        <div class="font-card-name">Mono · Geist Mono</div>
-        <div class="font-card-sample" style="font-family:var(--font-mono); font-weight:400;">Aa Gg</div>
-        <div class="font-card-desc">Code, tokens, eyebrows, technical metadata. Pairs with Geist's geometric forms.</div>
-      </div>
+    <div class="type-row">
+      <div class="label">Display · 56 / 700 / −0.03em</div>
+      <div class="type-display">Restrained by design.</div>
     </div>
-
-    <div class="type-stack">
-      <div class="type-row">
-        <div>
-          <div class="type-meta-name">Display</div>
-          <div class="type-meta-detail">Geist 500<br>82 / 1.0<br>−0.04em</div>
-        </div>
-        <div class="type-display">Build with Fastn.</div>
-      </div>
-      <div class="type-row">
-        <div>
-          <div class="type-meta-name">Heading 1</div>
-          <div class="type-meta-detail">Geist 500<br>58 / 1.05<br>−0.03em</div>
-        </div>
-        <div class="type-h1">A restrained palette.</div>
-      </div>
-      <div class="type-row">
-        <div>
-          <div class="type-meta-name">Heading 2</div>
-          <div class="type-meta-detail">Geist 500<br>38 / 1.1<br>−0.02em</div>
-        </div>
-        <div class="type-h2">Two typefaces, one job each.</div>
-      </div>
-      <div class="type-row">
-        <div>
-          <div class="type-meta-name">Heading 3</div>
-          <div class="type-meta-detail">Geist 500<br>28 / 1.3<br>−0.01em</div>
-        </div>
-        <div class="type-h3">Color is punctuation, not prose.</div>
-      </div>
-      <div class="type-row">
-        <div>
-          <div class="type-meta-name">Heading 4</div>
-          <div class="type-meta-detail">Inter 600<br>20 / 1.35</div>
-        </div>
-        <div class="type-h4">Use UI weights for cards and panels.</div>
-      </div>
-      <div class="type-row">
-        <div>
-          <div class="type-meta-name">Body</div>
-          <div class="type-meta-detail">Inter 400<br>16 / 1.65</div>
-        </div>
-        <div class="type-body">The Fastn brand uses one accent — Fastn Blue — and a calm neutral palette. Restraint is the point. Color marks the moments that need attention; everything else stays out of the way.</div>
-      </div>
-      <div class="type-row">
-        <div>
-          <div class="type-meta-name">Small</div>
-          <div class="type-meta-detail">Inter 400<br>14 / 1.6</div>
-        </div>
-        <div class="type-small">Captions, helper text, footnotes. Sits in Text 3 for reduced emphasis.</div>
-      </div>
-      <div class="type-row">
-        <div>
-          <div class="type-meta-name">Mono</div>
-          <div class="type-meta-detail">Geist Mono 400<br>14 / 1.6</div>
-        </div>
-        <div class="type-mono">const brand = fastn.colors.accent;</div>
-      </div>
+    <div class="type-row">
+      <div class="label">H1 · 42 / 700 / −0.025em</div>
+      <div class="type-h1">Color is punctuation.</div>
+    </div>
+    <div class="type-row">
+      <div class="label">H2 · 32 / 700 / −0.02em</div>
+      <div class="type-h2">One accent, one job.</div>
+    </div>
+    <div class="type-row">
+      <div class="label">H3 · 24 / 600 / −0.01em</div>
+      <div class="type-h3">Hierarchy from weight, not hue.</div>
+    </div>
+    <div class="type-row">
+      <div class="label">H4 · 18 / 600</div>
+      <div class="type-h4">Section labels and card titles.</div>
+    </div>
+    <div class="type-row">
+      <div class="label">Body · 16 / 400 / 1.6</div>
+      <div class="type-body">The Fastn brand uses one accent — Electric Indigo. Neutrals carry the work. Restraint is the point. Color marks the moments that need attention; everything else stays out of the way.</div>
+    </div>
+    <div class="type-row">
+      <div class="label">Small · 14 / 400</div>
+      <div class="type-small">Captions, helper text, footnotes.</div>
     </div>
   </div>
 </section>
 
-<!-- ─────────── Logo ─────────── -->
 <section id="logo">
   <div class="container">
     <header class="section-head">
-      <div class="section-tag">03 · Logo</div>
-      <h2 class="section-title">One mark, on every background.</h2>
-      <p class="section-desc">The Fastn wordmark and symbol. White on dark, black on light. Never recolored, never stretched, never on busy imagery.</p>
+      <h2>Logo</h2>
+      <p>One mark. White on dark, black on light. Never recolored, never on busy imagery.</p>
     </header>
 
     <div class="logo-grid">
-      <div class="logo-card">
-        <div class="logo-preview on-bg"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on dark"></div>
-        <div class="logo-card-meta">Wordmark · on background</div>
-      </div>
-      <div class="logo-card">
-        <div class="logo-preview on-card"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on card"></div>
-        <div class="logo-card-meta">Wordmark · on card</div>
-      </div>
-      <div class="logo-card">
-        <div class="logo-preview on-accent"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on accent"></div>
-        <div class="logo-card-meta">Wordmark · on accent</div>
-      </div>
-      <div class="logo-card">
-        <div class="logo-preview on-light"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on light"></div>
-        <div class="logo-card-meta">Wordmark · on light</div>
-      </div>
+      <div class="logo-tile logo-on-bg"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on background"></div>
+      <div class="logo-tile logo-on-card"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on card"></div>
+      <div class="logo-tile logo-on-accent"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on accent"></div>
+      <div class="logo-tile logo-on-light"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on light"></div>
     </div>
   </div>
 </section>
 
-<!-- ─────────── Voice ─────────── -->
 <section id="voice">
   <div class="container">
     <header class="section-head">
-      <div class="section-tag">04 · Voice</div>
-      <h2 class="section-title">Direct. Confident. Without ceremony.</h2>
-      <p class="section-desc">Fastn speaks like an engineer briefing a teammate. Short sentences. Concrete nouns. No marketing fog.</p>
+      <h2>Voice</h2>
+      <p>Direct. Confident. Without ceremony.</p>
     </header>
 
-    <div class="voice-grid">
-      <div class="voice-card">
-        <div class="voice-card-tag">Tone</div>
-        <h3 class="voice-card-title">We say</h3>
-        <ul class="voice-list">
-          <li>Trustworthy agents for high-value workflows.</li>
-          <li>Compress tool chains. Aggregate actions.</li>
-          <li>Decisions you can audit.</li>
-        </ul>
-      </div>
-      <div class="voice-card">
-        <div class="voice-card-tag">Anti-patterns</div>
-        <h3 class="voice-card-title">We don't say</h3>
-        <ul class="voice-list">
-          <li>Revolutionary, game-changing, paradigm-shift.</li>
-          <li>Unlock the power of, supercharge, leverage.</li>
-          <li>The future of AI is here.</li>
-        </ul>
-      </div>
-      <div class="voice-card">
-        <div class="voice-card-tag">Rule</div>
-        <h3 class="voice-card-title">Verbs over adjectives</h3>
-        <p>If you can't show it doing something, cut it. Adjectives describe; verbs commit.</p>
-      </div>
-      <div class="voice-card">
-        <div class="voice-card-tag">Rule</div>
-        <h3 class="voice-card-title">Specific over sweeping</h3>
-        <p>"Reduces tool-call latency by 60%" beats "blazing fast." Numbers and named systems over hype.</p>
-      </div>
-      <div class="voice-card">
-        <div class="voice-card-tag">Rule</div>
-        <h3 class="voice-card-title">One idea per sentence</h3>
-        <p>If a sentence has two commas and an em-dash, it has two sentences in it. Split them.</p>
-      </div>
-      <div class="voice-card">
-        <div class="voice-card-tag">Rule</div>
-        <h3 class="voice-card-title">Lower-case in product</h3>
-        <p>Sentence-case for UI strings. Title-case is reserved for the wordmark and proper nouns.</p>
-      </div>
+    <div class="voice-row">
+      <h3>We say</h3>
+      <ul>
+        <li>Trustworthy agents for high-value workflows.</li>
+        <li>Compress tool chains. Aggregate actions.</li>
+        <li>Decisions you can audit.</li>
+      </ul>
+    </div>
+    <div class="voice-row">
+      <h3>We don't say</h3>
+      <ul>
+        <li>Revolutionary. Game-changing. Paradigm-shift.</li>
+        <li>Unlock the power of. Supercharge. Leverage.</li>
+        <li>The future of AI is here.</li>
+      </ul>
+    </div>
+    <div class="voice-row">
+      <h3>Verbs over adjectives</h3>
+      <p>If you can't show it doing something, cut it. Adjectives describe; verbs commit.</p>
+    </div>
+    <div class="voice-row">
+      <h3>Specific over sweeping</h3>
+      <p>"Reduces tool-call latency by 60%" beats "blazing fast." Numbers and named systems over hype.</p>
+    </div>
+    <div class="voice-row">
+      <h3>One idea per sentence</h3>
+      <p>If a sentence has two commas and an em-dash, it has two sentences in it. Split them.</p>
     </div>
   </div>
 </section>
 
-<!-- ─────────── Components ─────────── -->
 <section id="components">
   <div class="container">
     <header class="section-head">
-      <div class="section-tag">05 · Components</div>
-      <h2 class="section-title">The atoms of the system.</h2>
-      <p class="section-desc">Buttons, badges, inputs, cards. Composed from the same five surfaces and one accent.</p>
+      <h2>Components</h2>
+      <p>Three button roles. One input style. That's the whole vocabulary.</p>
     </header>
 
-    <div class="demo-grid">
-      <div class="demo-card">
-        <div class="demo-card-label">Buttons</div>
+    <div class="demo-stack">
+      <div>
+        <div class="demo-label">Buttons</div>
         <div class="demo-row">
           <button class="btn btn-primary">Connect agent</button>
           <button class="btn btn-secondary">Book a demo</button>
-          <button class="btn btn-ghost">Learn more →</button>
+          <button class="btn btn-text">Learn more →</button>
         </div>
       </div>
-      <div class="demo-card">
-        <div class="demo-card-label">Badges</div>
-        <div class="demo-row">
-          <span class="badge">Default</span>
-          <span class="badge badge-accent">Beta</span>
-          <span class="badge badge-success">Active</span>
-          <span class="badge badge-warning">Deprecated</span>
-          <span class="badge badge-error">Error</span>
-        </div>
-      </div>
-      <div class="demo-card">
-        <div class="demo-card-label">Input</div>
+      <div>
+        <div class="demo-label">Input</div>
         <input class="input" placeholder="agent-name">
-        <div style="margin-top:12px"><input class="input" placeholder="Click to see focus ring"></div>
       </div>
-      <div class="demo-card">
-        <div class="demo-card-label">Code</div>
-        <pre class="code"><span class="c">// connect a tool to fastn</span>
-<span class="k">const</span> agent = <span class="k">new</span> <span class="p">FastnAgent</span>({
-  <span class="p">name</span>: <span class="s">"customer-support"</span>,
-  <span class="p">tools</span>: [<span class="s">"slack"</span>, <span class="s">"linear"</span>],
-});</pre>
+      <div class="prose">
+        <div class="demo-label">Inline link</div>
+        <p style="color:var(--t2); font-size:15px;">Read the <a href="#">integration guide</a> for setup. The accent appears only on actionable text — buttons, inline links, focus rings.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─────────── Tokens ─────────── -->
-<section id="tokens">
-  <div class="container">
-    <header class="section-head">
-      <div class="section-tag">06 · Tokens</div>
-      <h2 class="section-title">Spacing, radii, motion.</h2>
-      <p class="section-desc">A small, multiplicative scale. Easy to remember, hard to misuse.</p>
-    </header>
-
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:16px;">
-      <div class="tokens">
-        <div class="token-row"><span class="tk-name">--sp-1</span><span class="tk-value">4px</span><span class="tk-use">Tight inline</span></div>
-        <div class="token-row"><span class="tk-name">--sp-2</span><span class="tk-value">8px</span><span class="tk-use">Compact stack</span></div>
-        <div class="token-row"><span class="tk-name">--sp-3</span><span class="tk-value">12px</span><span class="tk-use">Standard inline gap</span></div>
-        <div class="token-row"><span class="tk-name">--sp-4</span><span class="tk-value">16px</span><span class="tk-use">Card padding</span></div>
-        <div class="token-row"><span class="tk-name">--sp-6</span><span class="tk-value">24px</span><span class="tk-use">Component padding</span></div>
-        <div class="token-row"><span class="tk-name">--sp-8</span><span class="tk-value">32px</span><span class="tk-use">Section gap</span></div>
-        <div class="token-row"><span class="tk-name">--sp-12</span><span class="tk-value">48px</span><span class="tk-use">Large stack</span></div>
-        <div class="token-row"><span class="tk-name">--sp-16</span><span class="tk-value">64px</span><span class="tk-use">Hero padding</span></div>
-        <div class="token-row"><span class="tk-name">--sp-20</span><span class="tk-value">80px</span><span class="tk-use">Section break</span></div>
-      </div>
-      <div class="tokens">
-        <div class="token-row"><span class="tk-name">--radius-1</span><span class="tk-value">4px</span><span class="tk-use">Chips, tags</span></div>
-        <div class="token-row"><span class="tk-name">--radius-2</span><span class="tk-value">6px</span><span class="tk-use">Inputs</span></div>
-        <div class="token-row"><span class="tk-name">--radius-3</span><span class="tk-value">8px</span><span class="tk-use">Buttons</span></div>
-        <div class="token-row"><span class="tk-name">--radius-4</span><span class="tk-value">12px</span><span class="tk-use">Cards</span></div>
-        <div class="token-row"><span class="tk-name">--radius-5</span><span class="tk-value">16px</span><span class="tk-use">Panels</span></div>
-        <div class="token-row"><span class="tk-name">--radius-full</span><span class="tk-value">9999px</span><span class="tk-use">Pills, avatars</span></div>
-        <div class="token-row"><span class="tk-name">--dur-fast</span><span class="tk-value">100ms</span><span class="tk-use">Hover, micro</span></div>
-        <div class="token-row"><span class="tk-name">--dur</span><span class="tk-value">180ms</span><span class="tk-use">Default</span></div>
-        <div class="token-row"><span class="tk-name">--dur-slow</span><span class="tk-value">320ms</span><span class="tk-use">Panels, drawers</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────── Accessibility ─────────── -->
 <section id="a11y">
   <div class="container">
     <header class="section-head">
-      <div class="section-tag">07 · Accessibility</div>
-      <h2 class="section-title">WCAG AA, by construction.</h2>
-      <p class="section-desc">Every token combo we ship in the system passes WCAG 2.1 AA for its intended use. Anything below the bar is documented as such.</p>
+      <h2>Accessibility</h2>
+      <p>Every token combo we ship passes WCAG AA for its intended use.</p>
     </header>
 
     <table class="a11y-table">
       <thead>
-        <tr>
-          <th>Foreground</th>
-          <th>Background</th>
-          <th>Ratio</th>
-          <th>Status</th>
-          <th>Usage</th>
-        </tr>
+        <tr><th>Combo</th><th>Ratio</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr><td>Text 1 <span class="ratio">#FFFFFF</span></td><td>BG <span class="ratio">#0E0E10</span></td><td class="ratio">19.51:1</td><td class="pass">AAA</td><td>Headings, display</td></tr>
-        <tr><td>Text 2 <span class="ratio">#D6D6D8</span></td><td>BG <span class="ratio">#0E0E10</span></td><td class="ratio">13.36:1</td><td class="pass">AAA</td><td>Body text</td></tr>
-        <tr><td>Text 3 <span class="ratio">#9A9AA2</span></td><td>BG <span class="ratio">#0E0E10</span></td><td class="ratio">6.85:1</td><td class="pass">AA</td><td>Lede, subheads</td></tr>
-        <tr><td>Text 4 <span class="ratio">#6E6E76</span></td><td>BG <span class="ratio">#0E0E10</span></td><td class="ratio">3.61:1</td><td class="pass">AA-large</td><td>Captions ≥18px only</td></tr>
-        <tr><td>Fastn Blue <span class="ratio">#4FB2FF</span></td><td>BG <span class="ratio">#0E0E10</span></td><td class="ratio">8.69:1</td><td class="pass">AAA</td><td>Links, accents</td></tr>
-        <tr><td>Text on CTA <span class="ratio">#06121C</span></td><td>Blue <span class="ratio">#4FB2FF</span></td><td class="ratio">8.55:1</td><td class="pass">AAA</td><td>Primary button text</td></tr>
+        <tr><td>Text 1 on Background</td><td>13.05:1</td><td><span class="pass">AAA</span></td></tr>
+        <tr><td>Text 2 on Background</td><td>5.55:1</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>Text 3 on Background</td><td>4.99:1</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>Text 4 on Background</td><td>3.07:1</td><td><span class="pass">AA Large</span></td></tr>
+        <tr><td>Indigo on Background</td><td>4.67:1</td><td><span class="pass">AA</span></td></tr>
+        <tr><td>White on Indigo CTA</td><td>4.83:1</td><td><span class="pass">AA</span></td></tr>
       </tbody>
     </table>
-
-    <div style="margin-top:32px; display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
-      <div class="voice-card">
-        <div class="voice-card-tag">Focus</div>
-        <h3 class="voice-card-title">Visible, always</h3>
-        <p>Interactive elements get a 3px <code style="font-family:var(--font-mono); font-size:12px; background:var(--s2); padding:2px 6px; border-radius:4px;">rgba(79,178,255,0.18)</code> ring on focus. Never <code style="font-family:var(--font-mono); font-size:12px; background:var(--s2); padding:2px 6px; border-radius:4px;">outline:none</code> without a replacement.</p>
-      </div>
-      <div class="voice-card">
-        <div class="voice-card-tag">Motion</div>
-        <h3 class="voice-card-title">Respects reduced motion</h3>
-        <p>All transitions honor <code style="font-family:var(--font-mono); font-size:12px; background:var(--s2); padding:2px 6px; border-radius:4px;">prefers-reduced-motion</code>. Decorative animation is opt-in, not opt-out.</p>
-      </div>
-      <div class="voice-card">
-        <div class="voice-card-tag">Targets</div>
-        <h3 class="voice-card-title">44px minimum</h3>
-        <p>Tap targets meet the 44×44px WCAG 2.5.5 target. Density modes shrink visuals, not hit boxes.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1052,13 +566,13 @@ footer a:hover { color: var(--t1); }
 
 <footer>
   <div class="container">
-    <p>Fastn Brand System · v2.0</p>
-    <p>Built at <a href="https://fastn.ai" target="_blank" rel="noopener">fastn.ai</a></p>
+    <span>Fastn Brand System</span>
+    <span><a class="accent" href="https://fastn.ai" target="_blank" rel="noopener">fastn.ai →</a></span>
   </div>
 </footer>
 
 <script>
-  // Theme toggle (persisted in localStorage; defaults to dark)
+  // Theme toggle, persisted
   (() => {
     const root = document.documentElement;
     const stored = localStorage.getItem('fastn-theme');
@@ -1070,16 +584,16 @@ footer a:hover { color: var(--t1); }
     });
   })();
 
-  // Copy-on-click for swatches
-  for (const s of document.querySelectorAll('.swatch')) {
-    const hex = s.querySelector('.swatch-hex')?.textContent.trim() || s.dataset.copy;
-    if (!hex) continue;
-    s.addEventListener('click', async () => {
+  // Copy hex on swatch row click
+  for (const row of document.querySelectorAll('.color-row')) {
+    row.addEventListener('click', async () => {
+      const hex = row.dataset.copy;
+      if (!hex) return;
       try {
         await navigator.clipboard.writeText(hex);
-        const orig = s.style.boxShadow;
-        s.style.boxShadow = '0 0 0 2px var(--accent)';
-        setTimeout(() => { s.style.boxShadow = orig; }, 320);
+        const orig = row.style.background;
+        row.style.background = 'rgba(108,92,231,0.10)';
+        setTimeout(() => { row.style.background = orig; }, 320);
       } catch (e) {}
     });
   }
