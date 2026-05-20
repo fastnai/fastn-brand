@@ -65,6 +65,34 @@
   --placeholder: #6E6E76; /* T3, 4.60 on input fill, AA */
 }
 
+/* Semantic aliases.
+   Atomic tokens above (--t1, --s1, ...) are the source of truth.
+   These aliases map them to role-based names for clearer consumption. */
+:root {
+  --color-text-primary:     var(--t1);
+  --color-text-body:        var(--t2);
+  --color-text-muted:       var(--t3);
+  --color-text-disabled:    var(--t4);
+
+  --color-surface-page:     var(--bg);
+  --color-surface-card:     var(--s1);
+  --color-surface-raised:   var(--s2);
+
+  --color-border-default:   var(--border);
+  --color-border-strong:    var(--bd-hi);
+
+  --color-action-primary:         var(--accent-1);
+  --color-action-gradient:        linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  --color-action-glow:            var(--accent-glow);
+  --color-link:                   var(--accent-link);
+  --color-on-accent:              var(--on-accent);
+  --color-focus-ring:             rgba(108, 92, 231, 0.40);
+
+  --color-state-success: var(--success);
+  --color-state-warning: var(--warning);
+  --color-state-error:   var(--error);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; }
 }

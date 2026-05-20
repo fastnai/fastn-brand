@@ -26,11 +26,19 @@
 <!-- Favicon -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%236C5CE7'/%3E%3C/svg%3E">
 
-<!-- Fonts. display=swap avoids FOIT on slow connections; preconnect cuts ~100ms. -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<!-- Fonts. Self-hosted Inter (latin subset, 83KB) so first paint never waits on Google. -->
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* Inter, self-hosted. Single woff2 covers all weights for the latin subset. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('fonts/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -40,6 +48,11 @@
   --accent-1:    #6C5CE7;
   --accent-2:    #8E76F2;
   --accent-glow: rgba(124, 92, 231, 0.45);
+
+  /* Semantic. Reserved for state indicators. */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error:   #EF4444;
 
   --font: 'Inter', system-ui, -apple-system, sans-serif;
 
@@ -291,19 +304,26 @@ label { display: block; font-size: 15px; font-weight: 600; color: var(--t1); mar
   margin: 8px auto 0;
 }
 
-/* Color rows */
+/* Color rows. <button> with grid layout so they're keyboard-accessible. */
 .color-rows { border-top: 1px solid var(--border); }
 .color-row {
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
   display: grid;
   grid-template-columns: 40px 1fr auto;
   align-items: center;
   gap: 16px;
   padding: 14px 0;
-  border-bottom: 1px solid var(--border);
   cursor: pointer;
   transition: background var(--dur) var(--ease);
 }
 .color-row:hover { background: var(--s1); }
+.color-row:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(108,92,231,0.40); border-radius: var(--r-2); }
 .color-row .chip {
   width: 40px;
   height: 40px;
@@ -421,7 +441,9 @@ label { display: block; font-size: 15px; font-weight: 600; color: var(--t1); mar
 }
 .dont-bad::before { content: "Don't"; color: var(--error); }
 .dont-good::before { content: "Do"; color: var(--success); }
-.bad-eyebrow { font-size: 11px; font-weight: 600; color: var(--accent-1); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+/* Use the link-color accent here so the demo passes contrast.
+   The wrongness illustrated is "accent on label", not low contrast. */
+.bad-eyebrow { font-size: 11px; font-weight: 600; color: var(--accent-link); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
 .bad-h { font-weight: 700; color: var(--t1); }
 .good-h { font-weight: 700; color: var(--t1); }
 .bad-gradient-text {
@@ -452,6 +474,14 @@ label { display: block; font-size: 15px; font-weight: 600; color: var(--t1); mar
 }
 .input::placeholder { color: var(--placeholder); }
 .input:focus { border-color: var(--accent-1); box-shadow: 0 0 0 3px rgba(108,92,231,0.20); }
+.input[aria-invalid="true"], .input.is-invalid { border-color: var(--error); }
+.input[aria-invalid="true"]:focus, .input.is-invalid:focus { box-shadow: 0 0 0 3px rgba(239,68,68,0.20); }
+.input:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.field { margin-top: 16px; }
+.field:first-child { margin-top: 0; }
+.field-hint { display: block; margin-top: 8px; font-size: 13px; color: var(--t3); line-height: 1.5; }
+.field-error { display: block; margin-top: 8px; font-size: 13px; color: var(--error); line-height: 1.5; font-weight: 500; }
 
 /* Inline links */
 .link {
@@ -549,7 +579,7 @@ footer .links a + a { margin-left: 16px; }
 <header class="topbar">
   <div class="topbar-inner">
     <a class="brand-mark" href="#top" aria-label="Fastn brand system, back to top">
-      <img src="logos/fastn-logo-400px.png" alt="Fastn">
+      <img src="logos/fastn-logo-400px.png" alt="Fastn" width="400" height="248" decoding="async">
     </a>
     <button class="theme-toggle" type="button" aria-label="Toggle color theme" id="themeToggle">
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
@@ -562,7 +592,7 @@ footer .links a + a { margin-left: 16px; }
 
 <section class="hero">
   <div class="shell">
-    <img class="icon-mark" src="logos/fastn-icon-rounded.jpg" alt="">
+    <img class="icon-mark" src="logos/fastn-icon-rounded.jpg" alt="" width="424" height="424" decoding="async">
     <h1>The Fastn brand system</h1>
     <p class="tagline">Color, type, logo, voice, and components. Restrained by design.</p>
     <a class="btn btn-primary" href="#color">Explore the system</a>
@@ -580,62 +610,62 @@ footer .links a + a { margin-left: 16px; }
 
     <div class="subhead">Accent</div>
     <div class="color-rows">
-      <div class="color-row" data-copy="#6C5CE7">
+      <button type="button" class="color-row" data-copy="#6C5CE7">
         <span class="chip" style="background:#6C5CE7"></span>
         <span class="meta"><span class="name">Indigo 1</span><span class="use">Primary CTA gradient start</span></span>
         <span class="hex">#6C5CE7</span>
-      </div>
-      <div class="color-row" data-copy="#8E76F2">
+      </button>
+      <button type="button" class="color-row" data-copy="#8E76F2">
         <span class="chip" style="background:#8E76F2"></span>
         <span class="meta"><span class="name">Indigo 2</span><span class="use">CTA gradient end. Dark-theme inline link color.</span></span>
         <span class="hex">#8E76F2</span>
-      </div>
-      <div class="color-row" data-copy="linear-gradient(90deg, #6C5CE7, #8E76F2)">
+      </button>
+      <button type="button" class="color-row" data-copy="linear-gradient(90deg, #6C5CE7, #8E76F2)">
         <span class="chip" style="background:linear-gradient(90deg, #6C5CE7, #8E76F2)"></span>
         <span class="meta"><span class="name">CTA gradient</span><span class="use">Primary button only. Always paired with the 28px outer glow.</span></span>
         <span class="hex">90deg</span>
-      </div>
+      </button>
     </div>
 
     <div class="subhead">Surfaces, dark theme</div>
     <div class="color-rows">
-      <div class="color-row" data-copy="#18181B"><span class="chip" style="background:#18181B"></span><span class="meta"><span class="name">Background</span><span class="use">Page background</span></span><span class="hex">#18181B</span></div>
-      <div class="color-row" data-copy="#1F1F23"><span class="chip" style="background:#1F1F23"></span><span class="meta"><span class="name">Surface 1</span><span class="use">Inputs, secondary buttons</span></span><span class="hex">#1F1F23</span></div>
-      <div class="color-row" data-copy="#26262B"><span class="chip" style="background:#26262B"></span><span class="meta"><span class="name">Surface 2</span><span class="use">Hover state</span></span><span class="hex">#26262B</span></div>
-      <div class="color-row" data-copy="#2A2A30"><span class="chip" style="background:#2A2A30"></span><span class="meta"><span class="name">Border</span><span class="use">1px dividers, default borders</span></span><span class="hex">#2A2A30</span></div>
-      <div class="color-row" data-copy="#3A3A42"><span class="chip" style="background:#3A3A42"></span><span class="meta"><span class="name">Border high</span><span class="use">Hover, focus borders</span></span><span class="hex">#3A3A42</span></div>
+      <button type="button" class="color-row" data-copy="#18181B"><span class="chip" style="background:#18181B"></span><span class="meta"><span class="name">Background</span><span class="use">Page background</span></span><span class="hex">#18181B</span></button>
+      <button type="button" class="color-row" data-copy="#1F1F23"><span class="chip" style="background:#1F1F23"></span><span class="meta"><span class="name">Surface 1</span><span class="use">Inputs, secondary buttons</span></span><span class="hex">#1F1F23</span></button>
+      <button type="button" class="color-row" data-copy="#26262B"><span class="chip" style="background:#26262B"></span><span class="meta"><span class="name">Surface 2</span><span class="use">Hover state</span></span><span class="hex">#26262B</span></button>
+      <button type="button" class="color-row" data-copy="#2A2A30"><span class="chip" style="background:#2A2A30"></span><span class="meta"><span class="name">Border</span><span class="use">1px dividers, default borders</span></span><span class="hex">#2A2A30</span></button>
+      <button type="button" class="color-row" data-copy="#3A3A42"><span class="chip" style="background:#3A3A42"></span><span class="meta"><span class="name">Border high</span><span class="use">Hover, focus borders</span></span><span class="hex">#3A3A42</span></button>
     </div>
 
     <div class="subhead">Text, dark theme</div>
     <div class="color-rows">
-      <div class="color-row" data-copy="#FFFFFF"><span class="chip" style="background:#FFFFFF"></span><span class="meta"><span class="name">Text 1</span><span class="use">Headings, primary text</span></span><span class="hex">#FFFFFF</span></div>
-      <div class="color-row" data-copy="#BDBDC4"><span class="chip" style="background:#BDBDC4"></span><span class="meta"><span class="name">Text 2</span><span class="use">Body</span></span><span class="hex">#BDBDC4</span></div>
-      <div class="color-row" data-copy="#8A8A92"><span class="chip" style="background:#8A8A92"></span><span class="meta"><span class="name">Text 3</span><span class="use">Supporting, captions</span></span><span class="hex">#8A8A92</span></div>
-      <div class="color-row" data-copy="#5C5C64"><span class="chip" style="background:#5C5C64"></span><span class="meta"><span class="name">Text 4</span><span class="use">Disabled, non-text only</span></span><span class="hex">#5C5C64</span></div>
+      <button type="button" class="color-row" data-copy="#FFFFFF"><span class="chip" style="background:#FFFFFF"></span><span class="meta"><span class="name">Text 1</span><span class="use">Headings, primary text</span></span><span class="hex">#FFFFFF</span></button>
+      <button type="button" class="color-row" data-copy="#BDBDC4"><span class="chip" style="background:#BDBDC4"></span><span class="meta"><span class="name">Text 2</span><span class="use">Body</span></span><span class="hex">#BDBDC4</span></button>
+      <button type="button" class="color-row" data-copy="#8A8A92"><span class="chip" style="background:#8A8A92"></span><span class="meta"><span class="name">Text 3</span><span class="use">Supporting, captions</span></span><span class="hex">#8A8A92</span></button>
+      <button type="button" class="color-row" data-copy="#5C5C64"><span class="chip" style="background:#5C5C64"></span><span class="meta"><span class="name">Text 4</span><span class="use">Disabled, non-text only</span></span><span class="hex">#5C5C64</span></button>
     </div>
 
     <div class="subhead">Surfaces, light theme</div>
     <div class="color-rows">
-      <div class="color-row" data-copy="#FFFFFF"><span class="chip" style="background:#FFFFFF"></span><span class="meta"><span class="name">Background</span><span class="use">Page background</span></span><span class="hex">#FFFFFF</span></div>
-      <div class="color-row" data-copy="#F4F4F6"><span class="chip" style="background:#F4F4F6"></span><span class="meta"><span class="name">Surface 1</span><span class="use">Inputs, secondary buttons</span></span><span class="hex">#F4F4F6</span></div>
-      <div class="color-row" data-copy="#EAEAEE"><span class="chip" style="background:#EAEAEE"></span><span class="meta"><span class="name">Surface 2</span><span class="use">Hover state</span></span><span class="hex">#EAEAEE</span></div>
-      <div class="color-row" data-copy="#E4E4E8"><span class="chip" style="background:#E4E4E8"></span><span class="meta"><span class="name">Border</span><span class="use">1px dividers, default borders</span></span><span class="hex">#E4E4E8</span></div>
-      <div class="color-row" data-copy="#CFCFD5"><span class="chip" style="background:#CFCFD5"></span><span class="meta"><span class="name">Border high</span><span class="use">Hover, focus borders</span></span><span class="hex">#CFCFD5</span></div>
+      <button type="button" class="color-row" data-copy="#FFFFFF"><span class="chip" style="background:#FFFFFF"></span><span class="meta"><span class="name">Background</span><span class="use">Page background</span></span><span class="hex">#FFFFFF</span></button>
+      <button type="button" class="color-row" data-copy="#F4F4F6"><span class="chip" style="background:#F4F4F6"></span><span class="meta"><span class="name">Surface 1</span><span class="use">Inputs, secondary buttons</span></span><span class="hex">#F4F4F6</span></button>
+      <button type="button" class="color-row" data-copy="#EAEAEE"><span class="chip" style="background:#EAEAEE"></span><span class="meta"><span class="name">Surface 2</span><span class="use">Hover state</span></span><span class="hex">#EAEAEE</span></button>
+      <button type="button" class="color-row" data-copy="#E4E4E8"><span class="chip" style="background:#E4E4E8"></span><span class="meta"><span class="name">Border</span><span class="use">1px dividers, default borders</span></span><span class="hex">#E4E4E8</span></button>
+      <button type="button" class="color-row" data-copy="#CFCFD5"><span class="chip" style="background:#CFCFD5"></span><span class="meta"><span class="name">Border high</span><span class="use">Hover, focus borders</span></span><span class="hex">#CFCFD5</span></button>
     </div>
 
     <div class="subhead">Text, light theme</div>
     <div class="color-rows">
-      <div class="color-row" data-copy="#18181B"><span class="chip" style="background:#18181B"></span><span class="meta"><span class="name">Text 1</span><span class="use">Headings, primary text</span></span><span class="hex">#18181B</span></div>
-      <div class="color-row" data-copy="#44444A"><span class="chip" style="background:#44444A"></span><span class="meta"><span class="name">Text 2</span><span class="use">Body</span></span><span class="hex">#44444A</span></div>
-      <div class="color-row" data-copy="#6E6E76"><span class="chip" style="background:#6E6E76"></span><span class="meta"><span class="name">Text 3</span><span class="use">Supporting, captions</span></span><span class="hex">#6E6E76</span></div>
-      <div class="color-row" data-copy="#A4A4AC"><span class="chip" style="background:#A4A4AC"></span><span class="meta"><span class="name">Text 4</span><span class="use">Disabled, non-text only</span></span><span class="hex">#A4A4AC</span></div>
+      <button type="button" class="color-row" data-copy="#18181B"><span class="chip" style="background:#18181B"></span><span class="meta"><span class="name">Text 1</span><span class="use">Headings, primary text</span></span><span class="hex">#18181B</span></button>
+      <button type="button" class="color-row" data-copy="#44444A"><span class="chip" style="background:#44444A"></span><span class="meta"><span class="name">Text 2</span><span class="use">Body</span></span><span class="hex">#44444A</span></button>
+      <button type="button" class="color-row" data-copy="#6E6E76"><span class="chip" style="background:#6E6E76"></span><span class="meta"><span class="name">Text 3</span><span class="use">Supporting, captions</span></span><span class="hex">#6E6E76</span></button>
+      <button type="button" class="color-row" data-copy="#A4A4AC"><span class="chip" style="background:#A4A4AC"></span><span class="meta"><span class="name">Text 4</span><span class="use">Disabled, non-text only</span></span><span class="hex">#A4A4AC</span></button>
     </div>
 
     <div class="subhead">Semantic</div>
     <div class="color-rows">
-      <div class="color-row" data-copy="#10B981"><span class="chip" style="background:#10B981"></span><span class="meta"><span class="name">Success</span><span class="use">Positive states only</span></span><span class="hex">#10B981</span></div>
-      <div class="color-row" data-copy="#F59E0B"><span class="chip" style="background:#F59E0B"></span><span class="meta"><span class="name">Warning</span><span class="use">Caution states only</span></span><span class="hex">#F59E0B</span></div>
-      <div class="color-row" data-copy="#EF4444"><span class="chip" style="background:#EF4444"></span><span class="meta"><span class="name">Error</span><span class="use">Destructive, error states only</span></span><span class="hex">#EF4444</span></div>
+      <button type="button" class="color-row" data-copy="#10B981"><span class="chip" style="background:#10B981"></span><span class="meta"><span class="name">Success</span><span class="use">Positive states only</span></span><span class="hex">#10B981</span></button>
+      <button type="button" class="color-row" data-copy="#F59E0B"><span class="chip" style="background:#F59E0B"></span><span class="meta"><span class="name">Warning</span><span class="use">Caution states only</span></span><span class="hex">#F59E0B</span></button>
+      <button type="button" class="color-row" data-copy="#EF4444"><span class="chip" style="background:#EF4444"></span><span class="meta"><span class="name">Error</span><span class="use">Destructive, error states only</span></span><span class="hex">#EF4444</span></button>
     </div>
   </div>
 </section>
@@ -663,19 +693,19 @@ footer .links a + a { margin-left: 16px; }
     </header>
     <div class="logo-grid">
       <div class="logo-cell">
-        <div class="logo-tile logo-on-bg"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on background"></div>
+        <div class="logo-tile logo-on-bg"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on background" width="2307" height="1611" loading="lazy" decoding="async"></div>
         <span class="logo-tile-meta">Wordmark on background</span>
       </div>
       <div class="logo-cell">
-        <div class="logo-tile logo-on-card"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on surface"></div>
+        <div class="logo-tile logo-on-card"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on surface" width="2307" height="1611" loading="lazy" decoding="async"></div>
         <span class="logo-tile-meta">Wordmark on surface</span>
       </div>
       <div class="logo-cell">
-        <div class="logo-tile logo-on-light"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on light"></div>
+        <div class="logo-tile logo-on-light"><img src="logos/fastn-logo-740px.png" alt="Fastn wordmark on light" width="2307" height="1611" loading="lazy" decoding="async"></div>
         <span class="logo-tile-meta">Wordmark on light</span>
       </div>
       <div class="logo-cell">
-        <div class="logo-tile icon-tile logo-on-card"><img src="logos/fastn-icon-rounded.jpg" alt="Fastn icon"></div>
+        <div class="logo-tile icon-tile logo-on-card"><img src="logos/fastn-icon-rounded.jpg" alt="Fastn icon" width="424" height="424" loading="lazy" decoding="async"></div>
         <span class="logo-tile-meta">Icon mark</span>
       </div>
     </div>
@@ -752,6 +782,24 @@ footer .links a + a { margin-left: 16px; }
       <div class="states-row"><button class="btn btn-secondary" type="button" disabled>Disabled secondary</button></div>
       <div class="states-row"><button class="btn btn-secondary" type="button" data-loading="true">Loading secondary</button></div>
     </div>
+
+    <div class="states">
+      <div class="states-label">Input states</div>
+      <div class="field">
+        <label for="demo-input-hint">With hint</label>
+        <input class="input" id="demo-input-hint" type="text" placeholder="agent-name" aria-describedby="demo-hint">
+        <span class="field-hint" id="demo-hint">Lowercase letters, numbers, and hyphens only.</span>
+      </div>
+      <div class="field">
+        <label for="demo-input-error">With error</label>
+        <input class="input" id="demo-input-error" type="email" value="not-an-email" aria-invalid="true" aria-describedby="demo-error">
+        <span class="field-error" id="demo-error">Enter a valid email address.</span>
+      </div>
+      <div class="field">
+        <label for="demo-input-disabled">Disabled</label>
+        <input class="input" id="demo-input-disabled" type="text" value="readonly@fastn.ai" disabled>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -765,11 +813,11 @@ footer .links a + a { margin-left: 16px; }
     <div class="dont-row">
       <div class="dont-label">Don't apply the accent to section labels or eyebrows</div>
       <div class="dont-example">
-        <div class="dont-bad">
+        <div class="dont-bad" aria-hidden="true">
           <div class="bad-eyebrow">01 &middot; COLOR</div>
           <div class="bad-h">A restrained palette</div>
         </div>
-        <div class="dont-good">
+        <div class="dont-good" aria-hidden="true">
           <div class="good-h">Color</div>
         </div>
       </div>
@@ -778,32 +826,32 @@ footer .links a + a { margin-left: 16px; }
     <div class="dont-row">
       <div class="dont-label">Don't use the gradient on text</div>
       <div class="dont-example">
-        <div class="dont-bad"><span class="bad-gradient-text">Trustworthy agents</span></div>
-        <div class="dont-good"><span class="good-text">Trustworthy agents</span></div>
+        <div class="dont-bad" aria-hidden="true"><span class="bad-gradient-text">Trustworthy agents</span></div>
+        <div class="dont-good" aria-hidden="true"><span class="good-text">Trustworthy agents</span></div>
       </div>
     </div>
 
     <div class="dont-row">
       <div class="dont-label">Don't introduce a second typeface</div>
       <div class="dont-example">
-        <div class="dont-bad" style="font-family: Georgia, serif;">Built for engineers</div>
-        <div class="dont-good">Built for engineers</div>
+        <div class="dont-bad" style="font-family: Georgia, serif;" aria-hidden="true">Built for engineers</div>
+        <div class="dont-good" aria-hidden="true">Built for engineers</div>
       </div>
     </div>
 
     <div class="dont-row">
       <div class="dont-label">Don't change hue on hover (use brightness or opacity)</div>
       <div class="dont-example">
-        <div class="dont-bad"><button class="btn btn-secondary bad-hover" type="button">Hover me</button></div>
-        <div class="dont-good"><button class="btn btn-secondary" type="button">Hover me</button></div>
+        <div class="dont-bad" aria-hidden="true"><button class="btn btn-secondary bad-hover" type="button" tabindex="-1">Hover me</button></div>
+        <div class="dont-good" aria-hidden="true"><button class="btn btn-secondary" type="button" tabindex="-1">Hover me</button></div>
       </div>
     </div>
 
     <div class="dont-row">
       <div class="dont-label">Don't use em dashes in copy</div>
       <div class="dont-example">
-        <div class="dont-bad">Inter only &mdash; no second face, no mono.</div>
-        <div class="dont-good">Inter only. No second face, no mono.</div>
+        <div class="dont-bad" aria-hidden="true">Inter only &mdash; no second face, no mono.</div>
+        <div class="dont-good" aria-hidden="true">Inter only. No second face, no mono.</div>
       </div>
     </div>
   </div>
