@@ -1,0 +1,21 @@
+{
+  "name": "@fastn/brand",
+  "version": "3.0.0",
+  "description": "Fastn brand system - design tokens, logos, fonts",
+  "license": "UNLICENSED",
+  "private": true,
+  "files": [
+    "tokens.css",
+    "tokens.json",
+    "logos",
+    "fonts",
+    "SKILL.md"
+  ],
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./tokens.json": "./tokens.json",
+    "./logos/*": "./logos/*",
+    "./fonts/*": "./fonts/*",
+    "./package.json": "./package.json"
+  }
+}
